@@ -1,21 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Scooters</title>
-</head>
-<body>
-    <p>
-        Scooter ID:{{$scooter->id}}
-    </p>
-    <p>
-        Enter your name and creditcard details below:
-    </p>
-    <form>
-        <input type="text" name="name">
-    </form>
+@extends('layout')
+
+@section('style')
+
+    body {
+        color:white;
+    }
+
+    h2 {
+        padding: 20px;
+    }
+
+    body {
+        background-image: url("/images/scooter_city.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
     
-</body>
-</html>
+@endsection
+
+@section('content')  
+
+    <div class="container">
+
+            <div class="text-center">
+                <h2 text-center>Step Up</h2>
+                <p>Scooter ID: {{$scooter->id}}</p>
+            </div>
+
+            <form action="/">
+
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="name" class="form-control" id="name" placeholder="Step Up" name="name">
+              </div>
+
+              <div class="form-group">
+                <label for="cc">Creditcard Number:</label>
+                <input type="text" class="form-control" id="cc" placeholder="1234 1234 1234 1234" name="cc">
+              </div>
+
+              <div class="form-group form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Let's go!</button>
+
+            </form>
+
+          </div>
+    
+@endsection

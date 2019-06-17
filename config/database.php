@@ -2,14 +2,8 @@
 
 use Illuminate\Support\Str;
 
-$url = parse_url(getenv("DATABASE_URL"));
-
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
-$port = $url["port"];
-$scheme = $url["scheme"];
+$heroku_db_url = parse_url(env('DATABASE_URL', "postgres://opvsdynteofzqr:8158568a098431c80d2ebe63e74ac9a6573173962037ff0d1723a11f962561dc@ec2-23-21-91-183.compute-1.amazonaws.com:5432/de7qbco788jma3
+"));
 
 return [
 
@@ -24,7 +18,7 @@ return [
     |
     */
 
-    'default' => $scheme,
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -43,6 +37,17 @@ return [
     */
 
     'connections' => [
+
+        'pg-heroku' => [
+            'driver'   => 'pgsql',
+            'host'     => $heroku_db_url['host'],
+            'database' => substr($heroku_db_url['path'], 1),
+            'username' => $heroku_db_url['user'],
+            'password' => $heroku_db_url['pass'],
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+        ],
 
         'sqlite' => [
             'driver' => 'sqlite',
@@ -75,11 +80,11 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
-            'host' => $host,
-            'port' => $port,
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
