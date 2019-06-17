@@ -15,7 +15,10 @@ class PaymentController extends Controller
             "email" => $request->email,
             "name" => $request->name,
             "description" => "Customer for stepup.com",
-            "source" => "tok_visa" // obtained with Stripe.js
+            "source" => "tok_visa", // obtained with Stripe.js
+            "metadata" => ["scooter_id" => $request->scooter_id]
           ]);
+
+          
     }
 }

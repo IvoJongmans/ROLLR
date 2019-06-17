@@ -52,6 +52,9 @@
           <!-- Used to display form errors. -->
           <div id="card-errors" role="alert"></div>
         </div>
+
+        <!--IS THIS THE RIGHT WAY? -->
+        <input type="hidden" name="scooter_id" value="{{$scooter->id}}">
       
         <div class="form-row">
           <button class="btn btn-primary" style="margin-top:20px;">Submit Details</button>

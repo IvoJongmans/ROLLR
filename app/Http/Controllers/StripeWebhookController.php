@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class StripeWebhookController extends Controller
 {
     public function handle(Request $request) {
-        return "Customer Created";
+        return $request;
     }
 }
