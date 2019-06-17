@@ -16,6 +16,7 @@ class CreateScootersTable extends Migration
         Schema::create('scooters', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('location');
+            $table->string('availability')->default('free');
             $table->timestamps();
         });
     }

@@ -53,7 +53,9 @@
           <div id="card-errors" role="alert"></div>
         </div>
       
-        <button class="btn btn-primary" style="margin:10px;">Submit Payment</button>
+        <div class="form-row">
+          <button class="btn btn-primary" style="margin-top:20px;">Submit Details</button>
+        </div>
       </form>
 
     </div>
