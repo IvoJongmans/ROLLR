@@ -16,3 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('scooter/{scooter}', 'ScooterController@show');
+
+Route::post('/charge', 'PaymentController@handle');
+
+Route::post('/stripe/webhook', 'StripeWebhookController@handle');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Scooter;
 use Illuminate\Http\Request;
+use Stripe;
 
 class ScooterController extends Controller
 {
