@@ -32,6 +32,6 @@ class UserRegisterController extends Controller
         $scooter = $scooter->id;
         $local_customer_id = $local_customer->id;
 
-        return redirect('scooter/'.$scooter.'/verify/'.$local_customer_id);
+       // return redirect('scooter/'.$scooter.'/verify/'.$local_customer_id);
     }
 }
