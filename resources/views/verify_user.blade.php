@@ -38,7 +38,7 @@ body {
     {
         $.ajax({
             type: "get",
-            url: "https://safe-beyond-49098.herokuapp.com/verify/1",
+            url: "/verify/{{$user->id}}",
             success:function(data)
             {
     

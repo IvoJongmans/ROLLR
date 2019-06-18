@@ -23,15 +23,11 @@ class UserRegisterController extends Controller
             "metadata" => ["scooter_id" => $request->scooter_id]
           ]);
 
-        $local_customer = User::create([
+        $user = User::create([
             'cell_number' => $request->cell_number,
             'password' => $request->password,
             'stripe_id' => $customer->id,
-        ]);
-
-        $scooter = $scooter->id;
-        $local_customer_id = $local_customer->id;
-        $user = $local_customer;
+        ]);        
         
 
     return view('verify_user', compact('scooter', 'user'));

@@ -29,6 +29,11 @@ Route::get('scooter/{scooter}/register', 'UserRegisterController@index');
 Route::post('scooter/{scooter}/register', 'UserRegisterController@store');
 
 Route::get('scooter/{scooter}/verify/{user}', 'VerifyUserController@verify');
+
+
+
+
+//API
 Route::get('/verify/{user}', 'VerifyUserController@handle');
 
 Auth::routes();

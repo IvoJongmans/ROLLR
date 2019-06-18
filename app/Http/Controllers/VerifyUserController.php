@@ -7,13 +7,10 @@ use App\Scooter;
 use App\User;
 
 class VerifyUserController extends Controller
-{
-    public function verify(Scooter $scooter, User $user) {
-
-        return view('verify_user', compact('scooter', 'user'));
-    }
-
-    public function handle(){
-        return 'test';
+{   
+    public function handle(User $user){
+        if($user->user_validated == "yes"){
+            return "yes";
+        }
     }
 }
