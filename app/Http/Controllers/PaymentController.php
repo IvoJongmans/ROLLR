@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use Stripe;
 
@@ -19,6 +18,6 @@ class PaymentController extends Controller
             "metadata" => ["scooter_id" => $request->scooter_id]
           ]);
 
-          
+        
     }
 }

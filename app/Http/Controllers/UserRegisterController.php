@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Scooter;
+use App\User;
+use Stripe;
+
+class UserRegisterController extends Controller
+{
+    public function index(Scooter $scooter) {
+
+        return view('register', compact('scooter'));
+    }
+
+    public function store(Request $request, Scooter $scooter) {
+
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $customer = \Stripe\Customer::create([
+            "phone" => $request->cell_number,
+            "description" => "Customer for stepup.com",
+            "metadata" => ["scooter_id" => $request->scooter_id]
+          ]);
+
+        User::create([
+            'cell_number' => $request->cell_number,
+            'password' => $request->password,
+            'stripe_id' => $customer->id,
+        ]);
+
+        return view('verify_user');
+    }
+}

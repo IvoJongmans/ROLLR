@@ -15,12 +15,31 @@
         background-size: cover;
         background-repeat: no-repeat;
     }
+
+    button {
+      margin:25px;
+    }
     
 @endsection
 
 @section('content')  
 
     <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <a href="/scooter/{{$scooter->id}}/login"><button class="btn btn-primary">Login</button></a>
+        </div>
+      </div>
+      <div class="row">
+      	<div class="col text-center">
+          <a href="/scooter/{{$scooter->id}}/register"><button class="btn btn-primary">Register</button></a>
+        </div>
+      </div>
+    </div>
+
+
+
+    {{-- <div class="container">
 
       <div class="text-center">
           <h2 text-center>Step Up</h2>
@@ -63,7 +82,7 @@
 
     </div>
 
-          <script>
+      <script>
 
             // Create a Stripe client.
             var stripe = Stripe('pk_test_9GgUgNx8TfFAFPLEQWW5P4Hw00qF0wNQYJ');
@@ -134,12 +153,7 @@
             
               // Submit the form
               form.submit();
-            }
-            
-            
-            
-            
-            
-            </script>
+            }           
+      </script> --}}
     
 @endsection
