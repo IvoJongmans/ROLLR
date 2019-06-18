@@ -8,7 +8,9 @@ use App\User;
 class StripeWebhookController extends Controller
 {
     public function handle(Request $request) {
-        $stripe_id = $request->data['object']['customer'];
-        User::where('stripe_id', $stripe_id)->update(array('user_validated' => 'yes'));
+
+        return $request;
+        // $stripe_id = $request->data['object']['customer'];
+        // User::where('stripe_id', $stripe_id)->update(array('user_validated' => 'yes'));
     }
 }
