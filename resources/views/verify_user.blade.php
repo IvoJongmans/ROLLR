@@ -41,8 +41,9 @@ body {
             url: "/verify/{{$user->id}}",
             success:function(data)
             {
-    
-                console.log(data);
+                
+                window.location = 'yolo.nl'
+                
             }
         });
     }, 3000); 
