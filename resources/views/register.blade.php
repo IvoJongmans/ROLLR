@@ -27,7 +27,7 @@ body {
           <p>Scooter ID: {{$scooter->id}}</p>
       </div>
 
-      <form action="/scooter/{{$scooter->id}}/register" method="post" id="payment-form" oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "Passwords do not match." : "")'>
+      <form action="https://safe-beyond-49098.herokuapp.com/scooter/{{$scooter->id}}/register" method="post" id="payment-form" oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "Passwords do not match." : "")'>
         @csrf
         <div class="form-row">
           <label for="cell_number">
