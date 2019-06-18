@@ -29,4 +29,23 @@ body {
         <i class="fas fa-spinner fa-spin fa-lg"></i>
 </div>
 
+@if($user->user_validated == 'yes')
+    Verified!
+@endif
+
+<script>
+    setInterval(function()
+    {
+        $.ajax({
+            type: "get",
+            url: "https://safe-beyond-49098.herokuapp.com/verify/1",
+            success:function(data)
+            {
+    
+                console.log(data);
+            }
+        });
+    }, 3000); 
+</script>
+
 @endsection
