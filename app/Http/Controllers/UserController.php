@@ -11,10 +11,17 @@ class UserController extends Controller
 {
     public function dashboard(Scooter $scooter,User $user){
 
-            if(Auth::check()) {
+            $auth_id = Auth::id();
+            $user_id = $user->id;
+
+            if(Auth::check() && Auth::id() == $user_id) {
                
             return view('dashboard', compact('scooter', 'user'));
 
+            }
+
+            else{
+                return redirect('scooter/'.$scooter->id.'/login');
             }
             
         
