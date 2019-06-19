@@ -41,8 +41,8 @@ margin-left: -45px; /* Half the width */
 @section('content')
 
     <div class="container">
-      <h2 class="text-center">Welcome</h2>
-      <p>{{$user->cell_number}}</p>
+      <h2 class="text-center">Welcome to STEPPR</h2>
+      <p class="text-center">{{$user->cell_number}}</p>
     </div>
 
     @if($user->cc_validated == "no")
@@ -145,7 +145,7 @@ margin-left: -45px; /* Half the width */
     @if($user->cc_validated == "yes")
 
     <div class="container">
-    	<h2 class="text-center">You're good to go!</h2>
+    	<p class="text-center">You're good to go!</p>
     </div>
 
     @endif
