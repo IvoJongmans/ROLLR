@@ -1,19 +1,39 @@
 @extends('layout')
 
 @section('style')
-  body {
-    color:white;
-  }
+body {
+  color:white;
+  background-color: #001B2B;
+}
 
-  h2 {
-    padding: 20px;
-  }
+h2 {
+  padding: 20px;
+}
 
-  body {
-    background-image: url("/images/scooter_city.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
+button {
+margin-top:25px;
+}
+
+.custom-button{
+background:    #001b2b;
+border:        4px solid #fb7612;
+border-radius: 5px;
+padding:       8px 20px;
+color:         #ffffff;
+display:       inline-block;
+text-align:    center;
+min-width:     150px;
+}
+
+img {
+position: absolute;
+top: 90%;
+left: 50%;
+width: 90px;
+height: 90px;
+margin-top: -45px; /* Half the height */
+margin-left: -45px; /* Half the width */
+}
 
 .StripeElement {
   box-sizing: border-box;
@@ -60,8 +80,10 @@
     <div id="card-errors" role="alert"></div>
   </div>
 
-  <button>Submit Payment</button>
+  <button class="custom-button">Submit Payment</button>
 </form>
+
+<img src="/images/scooter.png" class="fix">
 
 
 

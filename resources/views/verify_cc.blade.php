@@ -9,6 +9,7 @@
 
 body {
     color:white;
+    background-color: #001B2B;
 }
 
 h2 {
@@ -21,13 +22,35 @@ body {
     background-repeat: no-repeat;
 }
 
+.spin-center {
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px; /* Half the height */
+  margin-left: -15px; /* Half the width */
+}
+
+img {
+position: absolute;
+top: 90%;
+left: 50%;
+width: 90px;
+height: 90px;
+margin-top: -45px; /* Half the height */
+margin-left: -45px; /* Half the width */
+}
+
 @endsection
 
 @section('content')      
 
 <div class="container text-center">
-        <i class="fas fa-spinner fa-spin fa-lg"></i>
+        <i class="fas fa-spinner fa-spin fa-lg spin-center"></i>
 </div>
+
+<img src="/images/scooter.png" class="fix">
 
 <script>
    setInterval(function()

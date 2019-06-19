@@ -3,17 +3,37 @@
 @section('style')
 
 body {
-    color:white;
+  color:white;
+  background-color: #001B2B;
 }
 
 h2 {
-    padding: 20px;
+  padding: 20px;
 }
 
-body {
-    background-image: url("/images/scooter_city.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+button {
+margin-top:25px;
+}
+
+.custom-button{
+background:    #001b2b;
+border:        4px solid #fb7612;
+border-radius: 5px;
+padding:       8px 20px;
+color:         #ffffff;
+display:       inline-block;
+text-align:    center;
+min-width:     150px;
+}
+
+img {
+position: absolute;
+top: 90%;
+left: 50%;
+width: 90px;
+height: 90px;
+margin-top: -45px; /* Half the height */
+margin-left: -45px; /* Half the width */
 }
     
 @endsection
@@ -51,11 +71,13 @@ body {
         <input type="hidden" name="scooter_id" value="{{$scooter->id}}">
       
         <div class="form-row">
-          <button class="btn btn-primary" style="margin-top:20px;">Submit Details</button>
+          <button class="custom-button" style="margin-top:20px;">Submit Details</button>
         </div>
       </form>
 
     </div>
+
+    <img src="/images/scooter.png" class="fix">
 
     <script>
 

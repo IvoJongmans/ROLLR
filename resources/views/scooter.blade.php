@@ -4,22 +4,38 @@
 
     body {
         color:white;
+        background-color: #001B2B;
     }
 
     h2 {
         padding: 20px;
     }
 
-    body {
-        background-image: url("/images/scooter.png");
-        background-size: cover;
-        background-repeat: no-repeat;
+    button {
+      margin-top:25px;
     }
 
-    button {
-      margin:25px;
+    .custom-button{
+      background:    #001b2b;
+      border:        4px solid #fb7612;
+      border-radius: 5px;
+      padding:       8px 20px;
+      color:         #ffffff;
+      display:       inline-block;
+      text-align:    center;
+      min-width:     150px;
     }
-    
+
+    img {
+      position: absolute;
+      top: 90%;
+      left: 50%;
+      width: 90px;
+      height: 90px;
+      margin-top: -45px; /* Half the height */
+      margin-left: -45px; /* Half the width */
+    }
+     
 @endsection
 
 @section('content')  
@@ -27,15 +43,19 @@
     <div class="container">
       <div class="row">
         <div class="col text-center">
-          <a href="/scooter/{{$scooter->id}}/login"><button class="btn btn-primary">Login</button></a>
+          <a href="/scooter/{{$scooter->id}}/login"><button class="custom-button">Login</button></a>
         </div>
       </div>
       <div class="row">
       	<div class="col text-center">
-          <a href="/scooter/{{$scooter->id}}/register"><button class="btn btn-primary">Register</button></a>
+          <a href="/scooter/{{$scooter->id}}/register"><button class="custom-button">Register</button></a>
         </div>
       </div>
     </div>
+
+    
+    <img src="/images/scooter.png" class="fix">
+    
 
 
 
