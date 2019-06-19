@@ -32,14 +32,21 @@ body {
       margin-left: -15px; /* Half the width */
 }
 
+@keyframes move {
+    0% { left: 0;}
+    100%{ left : 100%;}
+}
+
 img {
     position: absolute;
     top: 90%;
-    left: 50%;
     width: 90px;
     height: 90px;
     margin-top: -45px; /* Half the height */
     margin-left: -45px; /* Half the width */
+    animation: linear infinite forwards;
+    animation-name: move;
+    animation-duration: 3s;
   }
 
 @endsection
