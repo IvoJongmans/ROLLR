@@ -27,10 +27,16 @@ class UserRegisterController extends Controller
             'cell_number' => $request->cell_number,
             'password' => bcrypt($request->password),
             'stripe_id' => $customer->id,
-        ]);        
+        ]);     
+        
+        if (Hash::check($request->password, $database_password)) {
+            Auth::loginUsingId($user_id);
+            if (Auth::check()) {
+                return redirect('scooter/'.$scooter->id.'/user/'.$user_id);
+            }
         
 
-    return view('verify_user', compact('scooter', 'user'));
+    // return view('verify_user', compact('scooter', 'user'));
     
        // return redirect('scooter/'.$scooter.'/verify/'.$local_customer_id);
     }
