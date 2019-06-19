@@ -37,7 +37,7 @@ Route::get('scooter/{scooter}/user/{user}', 'UserController@dashboard');
 
 //API
 Route::get('/verify/{user}', 'VerifyUserController@handle');
-Route::get('/verify/cc/{user}', 'VerifyUserController@handle');
+Route::get('/verify/cc/{user}', 'VerifyCreditcardController@handle');
 
 
 Auth::routes();

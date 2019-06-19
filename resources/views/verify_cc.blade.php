@@ -34,12 +34,12 @@ body {
     {
         $.ajax({
             type: "get",
-            url: "/verify/cc/{{$user->id}}",
+            url: "/verify/cc/{{$user}}",
             success:function(data)
             {
                 
                 if(data == 'cc validated') {
-                    console.log('CC verified');
+                    window.location = '/scooter/{{$scooter}}/user/{{$user}}';
                 }
                 
             }

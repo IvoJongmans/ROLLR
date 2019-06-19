@@ -22,7 +22,9 @@ class VerifyUserCreditcardController extends Controller
           ]
         );
 
-        return view('verify_cc', compact('user'));
+        
+
+        return view('verify_cc', compact('scooter','user'));
 
         // $charge = \Stripe\Charge::create([
         //     'amount' => 100,

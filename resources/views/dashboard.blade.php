@@ -98,5 +98,11 @@
       </script>
 
     @endif
+
+    @if($user->cc_validated == "yes")
+
+    <h2>You're good to go!</h2>
+
+    @endif
     
 @endsection
