@@ -9,7 +9,7 @@ use App\User;
 class VerifyUserController extends Controller
 {   
     public function handle(User $user){
-        if($user->user_validated == "no"){
+        if($user->user_validated == "yes"){
             return "user validated";
         }
     }

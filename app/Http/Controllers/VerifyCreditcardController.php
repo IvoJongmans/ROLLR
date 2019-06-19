@@ -9,7 +9,7 @@ use App\Scooter;
 class VerifyCreditcardController extends Controller
 {
     public function handle(User $user){
-        if($user->cc_validated == "no"){
+        if($user->cc_validated == "yes"){
             return "cc validated";
         }
     }
