@@ -11,10 +11,10 @@ class UserController extends Controller
 {
     public function dashboard(Scooter $scooter,User $user){
 
-        if(Auth::check()) { 
+        
                
             return view('dashboard', compact('scooter', 'user'));
             
-        }
+        
     }
 }
