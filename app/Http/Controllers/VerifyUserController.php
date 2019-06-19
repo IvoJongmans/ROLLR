@@ -10,7 +10,7 @@ class VerifyUserController extends Controller
 {   
     public function handle(User $user){
         if($user->user_validated == "yes"){
-            return "yes";
+            return "user validated";
         }
     }
 }

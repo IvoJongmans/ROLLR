@@ -30,15 +30,17 @@ body {
 </div>
 
 <script>
-    setInterval(function()
+   setInterval(function()
     {
         $.ajax({
             type: "get",
-            url: "/verify/{{$user->id}}",
+            url: "/verify/cc/{{$user->id}}",
             success:function(data)
             {
                 
-                window.location = '/scooter/{{$scooter->id}}/user/{{$user->id}}';
+                if(data == 'cc validated') {
+                    console.log('CC verified');
+                }
                 
             }
         });

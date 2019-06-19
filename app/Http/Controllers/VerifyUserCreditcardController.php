@@ -22,6 +22,8 @@ class VerifyUserCreditcardController extends Controller
           ]
         );
 
+        return view('verify_cc', compact('user'));
+
         // $charge = \Stripe\Charge::create([
         //     'amount' => 100,
         //     'currency' => 'eur',

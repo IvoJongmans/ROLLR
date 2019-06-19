@@ -37,9 +37,9 @@ body {
             url: "/verify/{{$user->id}}",
             success:function(data)
             {
-                
-                window.location = '/scooter/{{$scooter->id}}/user/{{$user->id}}';
-                
+                if(data == 'user validated') {
+                    window.location = '/scooter/{{$scooter->id}}/user/{{$user->id}}';
+                }
             }
         });
     }, 3000); 
