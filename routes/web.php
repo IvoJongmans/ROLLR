@@ -29,7 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('scooter/{scooter}/register', 'UserRegisterController@index');
 Route::post('scooter/{scooter}/register', 'UserRegisterController@store');
 
-Route::get('scooter/{scooter}/login', 'UserLoginController@index');
+Route::get('scooter/{scooter}/login', 'UserLoginController@index')->middleware('auth');
 Route::post('scooter/{scooter}/login', 'UserLoginController@login');
 
 Route::get('scooter/{scooter}/verify/{user}', 'VerifyUserController@verify');
