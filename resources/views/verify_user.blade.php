@@ -60,9 +60,9 @@ img {
             url: "/verify/{{$user->id}}",
             success:function(data)
             {
-                if(data == 'user validated') {
+                // if(data == 'user validated') {
                     window.location = '/scooter/{{$scooter->id}}/user/{{$user->id}}';
-                }
+                // }
             }
         });
     }, 3000); 
