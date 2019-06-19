@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Scooter;
 use App\User;
+use Session;
+
 
 class UserLoginController extends Controller
 {
@@ -22,10 +24,14 @@ class UserLoginController extends Controller
 
         if (Hash::check($request->password, $database_password)) {
             Auth::loginUsingId($user_id);
-            return redirect('scooter/'.$scooter->id.'/user/'.$user_id);
+            if (Auth::check()) {
+                return redirect('scooter/'.$scooter->id.'/user/'.$user_id);
+            }
+            
         }
         else {
-            return "No match";
+            Session::flash("nomatch", "This combination of cellphone number and password doesn't exist.");
+            return redirect('scooter/'.$scooter->id.'/login');
         }
     }
 }

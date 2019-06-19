@@ -39,6 +39,11 @@ body {
           </label>
           <input type="password" class="form-control" name="password" id="password" minlength="8" required>
         </div>
+        @if(Session::has('nomatch'))
+        <p>
+            {{ Session::get('nomatch')}}
+        </p>
+        @endif
     
         <input type="hidden" name="scooter_id" value="{{$scooter->id}}">
       

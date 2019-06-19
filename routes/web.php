@@ -35,7 +35,7 @@ Route::post('scooter/{scooter}/login', 'UserLoginController@login');
 Route::get('scooter/{scooter}/verify/{user}', 'VerifyUserController@verify');
 Route::post('/scooter/{scooter}/user/{user}/cc_verify', 'VerifyUserCreditcardController@verify');
 
-Route::get('scooter/{scooter}/user/{user}', 'UserController@dashboard');
+Route::get('scooter/{scooter}/user/{user}', 'UserController@dashboard')->middleware('auth');
 
 
 //API
