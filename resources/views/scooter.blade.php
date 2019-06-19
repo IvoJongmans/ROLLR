@@ -11,7 +11,7 @@
     }
 
     body {
-        background-image: url("/images/scooter_city.png");
+        background-image: url("/images/scooter.png");
         background-size: cover;
         background-repeat: no-repeat;
     }
