@@ -8,10 +8,10 @@ class StripeCreditcardVerifyController extends Controller
 {
     public function handle(Request $request) {
         
-        // $stripe_id = $request->data['object']['customer'];
+        $stripe_id = $request->data['object'];
         // User::where('stripe_id', $stripe_id)->update(array('cc_validated' => 'yes'));
         // return "Creditcard was validated";
 
-        return $request;
+        return $stripe_id;
     }
 }
