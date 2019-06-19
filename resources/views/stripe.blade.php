@@ -1,6 +1,19 @@
 @extends('layout')
 
 @section('style')
+  body {
+    color:white;
+  }
+
+  h2 {
+    padding: 20px;
+  }
+
+  body {
+    background-image: url("/images/scooter_city.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 
 .StripeElement {
   box-sizing: border-box;

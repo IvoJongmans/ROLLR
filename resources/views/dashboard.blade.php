@@ -1,9 +1,27 @@
 @extends('layout')
 
+@section('style')
+
+body {
+    color:white;
+}
+
+h2 {
+    padding: 20px;
+}
+
+body {
+    background-image: url("/images/scooter_city.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+    
+@endsection
+
 @section('content')
 
     <div class="container">
-      <h2 class="text-center">Welcome back {{$user->cell_number}}</h2>
+      <h2 class="text-center">Welcome</h2>
     </div>
 
     @if($user->cc_validated == "no")
@@ -18,9 +36,6 @@
                 <!-- A Stripe Element will be inserted here. -->
               </div>    
             </div>  
-            <div class="form-row">
-                <p>An amount of $1 will be charged to verify your card.</p>
-            </div>
             <div class="form-row">
               <button class="btn btn-primary" style="margin-top:20px;">Submit Details</button>
             </div>
@@ -105,7 +120,9 @@
 
     @if($user->cc_validated == "yes")
 
-    <h2>You're good to go!</h2>
+    <div class="container">
+    	<h2 class="text-center">You're good to go!</h2>
+    </div>
 
     @endif
     
