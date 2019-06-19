@@ -13,7 +13,7 @@ use Session;
 class UserLoginController extends Controller
 {
     public function index(Scooter $scooter){
-        return view('login', compact('scooter'));
+        return view('login', compsact('scooter'));
     }
 
     public function login(Scooter $scooter, Request $request){

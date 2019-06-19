@@ -22,9 +22,11 @@ body {
 
     <div class="container">
       <h2 class="text-center">Welcome</h2>
+      <p>{{$user->cell_number}}</p>
     </div>
 
     @if($user->cc_validated == "no")
+
     <div class="container">
         <form action="/scooter/{{$scooter->id}}/user/{{$user->id}}/cc_verify" method="post" id="payment-form">
             @csrf        
