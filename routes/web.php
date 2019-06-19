@@ -32,10 +32,10 @@ Route::post('scooter/{scooter}/register', 'UserRegisterController@store');
 Route::get('scooter/{scooter}/login', 'UserLoginController@index');
 Route::post('scooter/{scooter}/login', 'UserLoginController@login');
 
-Route::get('scooter/{scooter}/verify/{user}', 'VerifyUserController@verify');
-Route::post('/scooter/{scooter}/user/{user}/cc_verify', 'VerifyUserCreditcardController@verify');
+Route::get('scooter/{scooter}/verify/{user}', 'VerifyUserController@verify')->middleware('auth');
+Route::post('/scooter/{scooter}/user/{user}/cc_verify', 'VerifyUserCreditcardController@verify')->middleware('auth');
 
-Route::get('scooter/{scooter}/user/{user}', 'UserController@dashboard')->middleware('auth');
+Route::get('scooter/{scooter}/user/{user}', 'UserController@dashboard')->name('dashboard')->middleware('auth');
 
 
 //API

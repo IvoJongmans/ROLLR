@@ -61,7 +61,7 @@ img {
             success:function(data)
             {
                 if(data == 'user validated') {
-                    window.location = '/scooter/{{$scooter->id}}/user/{{$user->id}}';
+                    window.location = "{{ route('dashboard', compact('scooter', 'user')) }}";
                 }
             }
         });

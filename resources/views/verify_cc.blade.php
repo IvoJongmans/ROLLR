@@ -62,7 +62,7 @@ margin-left: -45px; /* Half the width */
             {
                 
                 if(data == 'cc validated') {
-                    window.location = '/scooter/{{$scooter}}/user/{{$user}}';
+                    window.location = "{{ route('dashboard', compact('scooter', 'user')) }}"; 
                 }
                 
             }
