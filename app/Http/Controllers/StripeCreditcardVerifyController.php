@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class StripeCreditcardVerifyController extends Controller
 {
@@ -10,6 +11,6 @@ class StripeCreditcardVerifyController extends Controller
         
         $stripe_id = $request->data['object']['customer'];
         User::where('stripe_id', $stripe_id)->update(array('cc_validated' => 'yes'));
-        
+        return "Creditcard validated";
     }
 }
