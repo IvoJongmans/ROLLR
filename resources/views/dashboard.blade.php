@@ -2,6 +2,10 @@
 
 @section('content')
 
+    <div class="container">
+      <h2 class="text-center">Welcome back {{$user->cell_number}}</h2>
+    </div>
+
     @if($user->cc_validated == "no")
     <div class="container">
         <form action="/scooter/{{$scooter->id}}/user/{{$user->id}}/cc_verify" method="post" id="payment-form">

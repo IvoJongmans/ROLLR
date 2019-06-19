@@ -25,7 +25,7 @@ class UserRegisterController extends Controller
 
         $user = User::create([
             'cell_number' => $request->cell_number,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'stripe_id' => $customer->id,
         ]);        
         
