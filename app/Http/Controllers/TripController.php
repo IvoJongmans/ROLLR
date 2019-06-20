@@ -104,12 +104,10 @@ class TripController extends Controller
         // $minutes = floor($seconds / 60);
         // $amount = ($minutes * 15) + 100;
 
-
-
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
+        
         \Stripe\Charge::create(array(
-            "amount" => 100,
+            "amount" => $amount,
             "currency" => "eur",
             "customer" => $stripe_id
           ));
