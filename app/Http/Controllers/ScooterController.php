@@ -84,9 +84,11 @@ class ScooterController extends Controller
     {
         //
     }
+    // map: page does an ajax call using retrieve below
     public function map(){
         return view('scooter/map'); 
     }
+    // send: page does an ajax call storing location data using storelocation below.
     public function send(){
         return view('scooter/send');
     }
@@ -97,9 +99,10 @@ class ScooterController extends Controller
         $scooter->save(); 
     }
     public function retrieve(){
-        // $id = request('id');
-        $scooter = Scooter::findOrFail(1);
+        $id = request('id');
+        $scooter = Scooter::findOrFail($id);
         $returndata = response()->json([
+            'id' => $id,
             'lat' => $scooter->latitude,
             'lng' => $scooter->longitude,
         ]);
