@@ -302,7 +302,7 @@ input:checked + .slider:before {
             if ($('#checkbox').prop('checked') == false){
             clearInterval(interval);
             }
-          }, 10);          
+          }, 1000);          
         }
       });
     </script>
