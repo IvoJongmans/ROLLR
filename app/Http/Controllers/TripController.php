@@ -91,9 +91,9 @@ class TripController extends Controller
         return $trip->id;
     }
 
-    public function stop_trip(Scooter $scooter, User $user){
-        
-        Trip::where('user_id', $user->id)->update(['updated_at' => \Carbon\Carbon::now()]);
+    public function stop_trip(Scooter $scooter, User $user, Trip $trip){
+       
+        Trip::where('id', $trip->id)->update(['updated_at' => \Carbon\Carbon::now()]);
         return 'Trip stopped';
     }
 }

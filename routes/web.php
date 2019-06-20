@@ -52,7 +52,7 @@ Route::get('/verify/cc/{user}', 'VerifyCreditcardController@handle');
 
 //TRIP API
 Route::get('/scooter/{scooter}/user/{user}/starttrip', 'TripController@start_trip')->name('start_trip');
-Route::get('/scooter/{scooter}/user/{user}/stoptrip', 'TripController@stop_trip')->name('stop_trip');
+Route::get('/scooter/{scooter}/user/{user}/stoptrip/{trip}', 'TripController@stop_trip')->name('stop_trip');
 
 
 Auth::routes();

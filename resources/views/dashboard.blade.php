@@ -260,6 +260,7 @@ input:checked + .slider:before {
       var seconds = 0;
       var minutes = 0;
       var hours = 0;
+      var trip_id = '';
       $('#checkbox').click(function(){
         // console.log($('#checkbox').prop('checked'));
         if($('#checkbox').prop('checked') == true) {
@@ -268,7 +269,9 @@ input:checked + .slider:before {
             url: "/scooter/{{$scooter->id}}/user/{{$user->id}}/starttrip",
             success:function(data)
             {
-                console.log(data);
+                
+                trip_id = data;
+                
             }
           });
           var interval = setInterval(function(){
@@ -306,14 +309,14 @@ input:checked + .slider:before {
                 hours++
               }
             }    
-
+            console.log(trip_id);
             if ($('#checkbox').prop('checked') == false){
               $.ajax({
             type: "get",
-            url: "/scooter/{{$scooter->id}}/user/{{$user->id}}/stoptrip",
+            url: "/scooter/{{$scooter->id}}/user/{{$user->id}}/stoptrip/"+ trip_id,
             success:function(data)
             {
-                var trip_id = data;
+               console.log('Trip ended');
             }
           });
             $('#checkbox').attr("disabled", true);

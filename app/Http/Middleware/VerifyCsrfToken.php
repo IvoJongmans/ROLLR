@@ -24,6 +24,6 @@ class VerifyCsrfToken extends Middleware
         '/map/storelocation',
         '/map/retrieve',
         '/scooter/{scooter}/user/{user}/starttrip',
-        '/scooter/{scooter}/user/{user}/stoptrip'
+        '/scooter/{scooter}/user/{user}/stoptrip/{trip}'
     ];
 }
