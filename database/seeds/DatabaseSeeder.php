@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         App\Scooter::insert([
             'location' => 'Assen',
+            'latitude' => 0,
+            'longitude' => 0,
         ]);
     }
 }
