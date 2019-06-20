@@ -6,6 +6,7 @@ use App\Trip;
 use Illuminate\Http\Request;
 use App\Scooter;
 use App\User;
+use Stripe;
 
 class TripController extends Controller
 {
@@ -93,7 +94,15 @@ class TripController extends Controller
 
     public function stop_trip(Scooter $scooter, User $user, Trip $trip){
        
+        
         Trip::where('id', $trip->id)->update(['updated_at' => \Carbon\Carbon::now()]);
+        $stripe_id = User::where('id', $user->id)->value('stripe_id');
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        \Stripe\Charge::create(array(
+            "amount" => 100,
+            "currency" => "eur",
+            "customer" => $stripe_id
+          ));
         return 'Trip stopped';
     }
 }
