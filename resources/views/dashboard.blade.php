@@ -316,6 +316,7 @@ input:checked + .slider:before {
             url: "/scooter/{{$scooter->id}}/user/{{$user->id}}/stoptrip/"+ trip_id,
             success:function(data)
             {
+              console.log(data);
                console.log('Trip ended');
             }
           });
