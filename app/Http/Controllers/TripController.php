@@ -96,21 +96,21 @@ class TripController extends Controller
     public function stop_trip(Scooter $scooter, User $user, Trip $trip){
         
         Trip::where('id', $trip->id)->update(['updated_at' => \Carbon\Carbon::now()]);        
-        $stripe_id = User::where('id', $user->id)->value('stripe_id');
+        // $stripe_id = User::where('id', $user->id)->value('stripe_id');
 
-        $trip_time = Trip::where('id', $trip->id)->select(DB::raw('TIMESTAMPDIFF(SECOND,created_at, updated_at) as diff_in_secs'))->get()->pluck('diff_in_secs');
+        // $trip_time = Trip::where('id', $trip->id)->select(DB::raw('TIMESTAMPDIFF(SECOND,created_at, updated_at) as diff_in_secs'))->get()->pluck('diff_in_secs');
         
-        $seconds = ($trip_time[0]);
-        $minutes = floor($seconds / 60);
-        $amount = ($minutes * 15) + 100;
+        // $seconds = ($trip_time[0]);
+        // $minutes = floor($seconds / 60);
+        // $amount = ($minutes * 15) + 100;
 
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        // Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         
-        \Stripe\Charge::create(array(
-            "amount" => $amount,
-            "currency" => "eur",
-            "customer" => $stripe_id
-          ));
+        // \Stripe\Charge::create(array(
+        //     "amount" => $amount,
+        //     "currency" => "eur",
+        //     "customer" => $stripe_id
+        //   ));
         return 'Trip stopped';
     }
 }
