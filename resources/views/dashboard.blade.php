@@ -12,7 +12,7 @@ h2 {
 }
 
 button {
-margin-top:25px;
+  margin-top:25px;
 }
 
 .custom-button{
@@ -26,7 +26,7 @@ text-align:    center;
 min-width:     150px;
 }
 
-img {
+.fix {
 position: absolute;
 top: 90%;
 left: 50%;
@@ -35,14 +35,53 @@ height: 90px;
 margin-top: -45px; /* Half the height */
 margin-left: -45px; /* Half the width */
 }
+
+.dropdown-toggle:after { content: none }
+
+.hamburger {
+  height:25px;
+  width: 25px;  
+}
+
+.hamburger-button {
+  background:    #001b2b;
+  border:        4px solid #fb7612;
+  border-radius: 5px;
+  padding:       8px 20px;
+  color:         #ffffff;        
+  text-align:    center;  
+  margin:        10px;
+  }
+
+.align-vertical {
+  line-height: 30px;
+}
     
 @endsection
 
 @section('content')
 
-    <div class="container">
-      <h2 class="text-center">Welcome to STEPPR</h2>
-      <p class="text-center">{{$user->cell_number}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-6 text-left"><h2 class="align-vertical">ROLLR</h2></div>
+    <div class="col-6 text-right">
+      <button type="button" class="hamburger-button dropdown-toggle" data-toggle="dropdown">
+          <img src="/images/hamburger.png" class="hamburger">
+      </button>
+      
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" href="#">Billing History</a>
+        <a class="dropdown-item" href="#">Routes</a>
+        <a class="dropdown-item" href="{{ route('logout', compact('scooter')) }}">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container text-right">
+      {{-- <button href="{{ route('logout', compact('scooter')) }}"><button class="custom-button">Logout</button></button> --}}
+      {{-- <h2 class="text-center">Welcome to ROLLR</h2> --}}
+      {{-- <p class="text-center">{{$user->cell_number}}</p> --}}
     </div>
 
     @if($user->cc_validated == "no")

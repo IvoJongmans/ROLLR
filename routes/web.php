@@ -18,6 +18,9 @@ Route::get('/', function () {
 //routes to the scanned QR-code page
 Route::get('scooter/{scooter}', 'ScooterController@show');
 
+//logout
+Route::get('/logout', 'LogoutController@logout')->name('logout');
+
 Route::post('/charge', 'PaymentController@handle');
 
 //handles the webhook from stripe.com
