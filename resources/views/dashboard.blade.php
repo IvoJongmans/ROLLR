@@ -248,18 +248,63 @@ input:checked + .slider:before {
     <div class="container text-center">
       <p class="text-center">Scooter ID: {{$scooter->id}}</p>
     	<label class="switch">
-          <input type="checkbox" id="checkbox" onclick="timer()">
+          <input type="checkbox" id="checkbox">
           <span class="slider"></span>
         </label>
-        <h2 id="timer" class="text-center">00:00:00</h2>
+        <h2 id="timer" class="text-center"><span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span></h2>
     </div>
 
     @endif
 
     <script>
-      function timer() {
-        console.log($('#checkbox').prop("checked"));
-      }
+      var seconds = 0;
+      var minutes = 0;
+      var hours = 0;
+      $('#checkbox').click(function(){
+        // console.log($('#checkbox').prop('checked'));
+        if($('#checkbox').prop('checked') == true) {
+          var interval = setInterval(function(){
+            seconds++;
+            if(seconds <= 9) {
+              $('#seconds').html('0' + seconds);
+            }
+            else {
+              $('#seconds').html(seconds); 
+            }
+            if(minutes <= 9) {
+              $('#minutes').html('0' + minutes);
+            }
+            else {
+              $('#minutes').html(minutes); 
+            }
+            
+            if(hours <= 9) {
+              $('#hours').html('0' + hours);
+            }
+            else {
+              $('#hours').html(hours); 
+            }
+            
+            // $('#seconds').html(seconds);  
+            // $('#minutes').html(minutes);  
+            // $('#hours').html(hours);  
+
+            if(seconds == 59) {
+              seconds = -1;
+              minutes++;
+
+              if(minutes == 60) { 
+                minutes = 0;               
+                hours++
+              }
+            }    
+
+            if ($('#checkbox').prop('checked') == false){
+            clearInterval(interval);
+            }
+          }, 10);          
+        }
+      });
     </script>
 
     <img src="/images/scooter.png" class="fix">
