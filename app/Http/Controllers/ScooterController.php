@@ -90,4 +90,19 @@ class ScooterController extends Controller
     public function send(){
         return view('scooter/send');
     }
+    public function storelocation(){
+        $scooter = Scooter::find(1);
+        $scooter->latitude = request('latitude');
+        $scooter->longitude = request('longitude');  
+        $scooter->save(); 
+    }
+    public function retrieve(){
+        // $id = request('id');
+        $scooter = Scooter::findOrFail(1);
+        $returndata = response()->json([
+            'lat' => $scooter->latitude,
+            'lng' => $scooter->longitude,
+        ]);
+        return $returndata; 
+    }
 }

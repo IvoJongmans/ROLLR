@@ -18,6 +18,8 @@ class CreateScootersTable extends Migration
             $table->string('location');
             $table->string('availability')->default('free');
             $table->timestamps();
+            $table->decimal('latitude', 10, 8);
+            $table->decimal('longitude', 11, 8);
         });
     }
 

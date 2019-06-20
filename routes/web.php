@@ -17,6 +17,8 @@ Route::get('/', function () {
 // route map all scooters 
 Route::get('map', 'ScooterController@map');
 Route::get('map/send', 'ScooterController@send');
+Route::post('map/storelocation', 'ScooterController@storelocation');
+Route::post('map/retrieve', 'ScooterController@retrieve');
 
 //routes to the scanned QR-code page
 Route::get('scooter/{scooter}', 'ScooterController@show');
