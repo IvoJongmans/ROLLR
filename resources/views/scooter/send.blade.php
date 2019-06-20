@@ -27,7 +27,7 @@
           },
           {
             enableHighAccuracy: true,
-            timeout: 2000,
+            timeout: 1000,
             maximumAge: 3000,
           }
           );
