@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Trip;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 use App\Scooter;
 use App\User;
 use Stripe;
