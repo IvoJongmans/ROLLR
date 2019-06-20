@@ -5,13 +5,23 @@
     <meta charset="utf-8">
   </head>
   <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script>
         if (navigator.geolocation) {
           navigator.geolocation.watchPosition(function(position) {
             var lat = position.coords.latitude; 
             var lng = position.coords.longitude;
+            var URL = "/map/storelocation"; 
+            var data = {
+                latitude: lat,
+                longitude: lng,
+            }; 
             document.write(lat);
             document.write(lng);
+            $.post(URL, data, 
+            function(data, status){
+            console.log("Data: " + data + "\nStatus: " + status);
+             });
           }, function() {
             handleLocationError(true);
           },

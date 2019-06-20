@@ -21,5 +21,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         '/stripe/webhook',
         '/stripe/verify_cc',
+        '/map/storelocation'
     ];
 }
