@@ -22,6 +22,8 @@ class VerifyCsrfToken extends Middleware
         '/stripe/webhook',
         '/stripe/verify_cc',
         '/map/storelocation',
-        '/map/retrieve'
+        '/map/retrieve',
+        '/scooter/{scooter}/user/{user}/starttrip',
+        '/scooter/{scooter}/user/{user}/stoptrip'
     ];
 }
