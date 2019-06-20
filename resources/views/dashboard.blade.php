@@ -263,7 +263,14 @@ input:checked + .slider:before {
       $('#checkbox').click(function(){
         // console.log($('#checkbox').prop('checked'));
         if($('#checkbox').prop('checked') == true) {
-          //AJAX call start
+          $.ajax({
+            type: "get",
+            url: "/scooter/{{$scooter->id}}/user/{{$user->id}}/starttrip",
+            success:function(data)
+            {
+                console.log(data);
+            }
+          });
           var interval = setInterval(function(){
             seconds++;
             if(seconds <= 9) {
@@ -301,7 +308,14 @@ input:checked + .slider:before {
             }    
 
             if ($('#checkbox').prop('checked') == false){
-            //AJAX call stop;
+              $.ajax({
+            type: "get",
+            url: "/scooter/{{$scooter->id}}/user/{{$user->id}}/stoptrip",
+            success:function(data)
+            {
+                var trip_id = data;
+            }
+          });
             $('#checkbox').attr("disabled", true);
             clearInterval(interval);
             }
