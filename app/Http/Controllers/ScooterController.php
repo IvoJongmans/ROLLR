@@ -84,4 +84,10 @@ class ScooterController extends Controller
     {
         //
     }
+    public function map(){
+        return view('scooter/map'); 
+    }
+    public function send(){
+        return view('scooter/send');
+    }
 }
