@@ -10,8 +10,8 @@
           navigator.geolocation.watchPosition(function(position) {
             var lat = position.coords.latitude; 
             var lng = position.coords.longitude;
-            console.log(lat);
-            console.log(lng);
+            document.write(lat);
+            document.write(lng);
           }, function() {
             handleLocationError(true);
           },
