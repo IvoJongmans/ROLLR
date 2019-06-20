@@ -16,12 +16,6 @@ h2 {
     padding: 20px;
 }
 
-body {
-    background-image: url("/images/scooter_city.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
 .spin-center {
         position: absolute;
       top: 50%;
@@ -69,6 +63,7 @@ img {
             {
                 if(data == 'user validated') {
                     window.location = "{{ route('dashboard', compact('scooter', 'user')) }}";
+                    console.log('User Verified');
                 }
             }
         });
