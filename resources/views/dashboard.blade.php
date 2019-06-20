@@ -263,6 +263,7 @@ input:checked + .slider:before {
       $('#checkbox').click(function(){
         // console.log($('#checkbox').prop('checked'));
         if($('#checkbox').prop('checked') == true) {
+          //AJAX call start
           var interval = setInterval(function(){
             seconds++;
             if(seconds <= 9) {
@@ -300,6 +301,8 @@ input:checked + .slider:before {
             }    
 
             if ($('#checkbox').prop('checked') == false){
+            //AJAX call stop;
+            $('#checkbox').attr("disabled", true);
             clearInterval(interval);
             }
           }, 1000);          
