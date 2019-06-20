@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// route map all scooters 
+Route::get('map', 'ScooterController@map');
+Route::get('map/send', 'ScooterController@send');
 
 //routes to the scanned QR-code page
 Route::get('scooter/{scooter}', 'ScooterController@show');
