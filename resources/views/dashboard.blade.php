@@ -256,6 +256,10 @@ input:checked + .slider:before {
 
     @endif
 
+    <div class="container" id="trip_json">
+
+    </div>
+
     <script>
       var seconds = 0;
       var minutes = 0;
@@ -317,8 +321,8 @@ input:checked + .slider:before {
             success:function(data)
             {
             
-               console.log(data);
-               
+               $('#trip_json').html('Test');
+
             }
           });
             $('#checkbox').attr("disabled", true);

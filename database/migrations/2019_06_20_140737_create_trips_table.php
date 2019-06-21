@@ -15,6 +15,7 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('status')->default('in progress');
             $table->integer('scooter_id');
             $table->integer('user_id');
 
