@@ -256,8 +256,9 @@ input:checked + .slider:before {
 
     @endif
 
-    <div class="container" id="trip_json">
-
+    <div class="container">
+      <p class="text-center">Time: <span id="trip_time"></span> seconds.</p>
+      <p class="text-center">Cost: €<span id="trip_cost"></span>.</p>
     </div>
 
     <script>
@@ -320,8 +321,9 @@ input:checked + .slider:before {
             url: "/scooter/{{$scooter->id}}/user/{{$user->id}}/stoptrip/"+ trip_id,
             success:function(data)
             {
-            
-               $('#trip_json').html(data['amount']);
+
+               $('#trip_time').html(data['time']);
+               $('#trip_cost').html(data['amount']);
 
             }
           });
