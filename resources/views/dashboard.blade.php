@@ -317,7 +317,8 @@ input:checked + .slider:before {
             success:function(data)
             {
             
-               console.log('Trip ended');
+               console.log(data);
+               
             }
           });
             $('#checkbox').attr("disabled", true);

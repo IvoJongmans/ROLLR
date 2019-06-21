@@ -118,6 +118,10 @@ class TripController extends Controller
             "currency" => "eur",
             "customer" => $stripe_id
           ));
-        return 'Trip stopped';
+          $trip->amount = $amount;
+          
+          $trip_json = json_encode($trip);
+          
+          return $myJSON;
     }
 }
