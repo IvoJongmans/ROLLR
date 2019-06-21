@@ -107,7 +107,7 @@ class TripController extends Controller
 
         $amount = 100 + (15 * $trip_time);
 
-        $amount_euro = $amount / 100;
+        $amount_euro = number_format($amount / 100, 2);
 
         $stripe_id = User::where('id', $user->id)->value('stripe_id');
         
