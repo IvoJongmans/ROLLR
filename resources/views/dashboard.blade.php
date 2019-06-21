@@ -308,13 +308,15 @@ input:checked + .slider:before {
     </div>
 
     @endif
-    <div id="map"></div>
-    <div class="container" id="trip_json">
-    
+
+
+    <div id="map">
+      
     </div>
 
+    <div class="container" id="trip_json">
     
-    
+    </div>   
 
     <script>
       var seconds = 0;
