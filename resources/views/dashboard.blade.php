@@ -256,7 +256,7 @@ input:checked + .slider:before {
 
     @endif
 
-    <div class="container">
+    <div class="container" id="trip_json">
       <p class="text-center">Time: <span id="trip_time"></span> seconds.</p>
       <p class="text-center">Cost: €<span id="trip_cost"></span>.</p>
     </div>
@@ -321,10 +321,8 @@ input:checked + .slider:before {
             url: "/scooter/{{$scooter->id}}/user/{{$user->id}}/stoptrip/"+ trip_id,
             success:function(data)
             {
-
-               $('#trip_time').html(data['time']);
-               $('#trip_cost').html(data['amount']);
-
+              $('#trip_json').html(`<p class="text-center">Time: ${data['time']} seconds.</p>
+                                    <p class="text-center">Cost: €${data['amount']}.</p>`);
             }
           });
             $('#checkbox').attr("disabled", true);
