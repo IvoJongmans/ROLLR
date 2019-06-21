@@ -261,8 +261,8 @@ input:checked + .slider:before {
     @endif
 
 
-    <div class="container text-center">
-      <div id="map">
+    <div class="container">
+      <div id="map" class="text-center">
         
       </div>
     </div>
