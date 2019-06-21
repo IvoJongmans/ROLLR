@@ -261,8 +261,10 @@ input:checked + .slider:before {
     @endif
 
 
-    <div id="map">
-      
+    <div class="container text-center">
+      <div id="map">
+        
+      </div>
     </div>
 
     <div class="container" id="trip_json">
