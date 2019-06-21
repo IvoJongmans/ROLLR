@@ -321,7 +321,7 @@ input:checked + .slider:before {
             success:function(data)
             {
             
-               $('#trip_json').html('Test');
+               $('#trip_json').html(data['amount']);
 
             }
           });
