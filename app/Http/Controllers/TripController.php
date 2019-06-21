@@ -95,20 +95,26 @@ class TripController extends Controller
 
     public function stop_trip(Scooter $scooter, User $user, Trip $trip){
         
-        Trip::where('id', $trip->id)->update(['updated_at' => \Carbon\Carbon::now()]);        
+        Trip::where('id', $trip->id)->update(['updated_at' => \Carbon\Carbon::now()]);     
+
         $stripe_id = User::where('id', $user->id)->value('stripe_id');
 
-        // $trip_time = Trip::where("id", $trip->id)->select(DB::raw("EXTRACT(EPOCH FROM (created_at - updated_at))"));
+        $created_time = strtotime(Trip::where('id', $trip->id)->value('created_at'));
+
+        $updated_time = strtotime(Trip::where('id', $trip->id)->value('updated_at'));
+
+        $trip_time = floor(($updated_time - $created_time) / 60);
+
         
-        // $seconds = ($trip_time[0]);
-        // $minutes = floor($seconds / 60);
-        // $amount = 100 + ($minutes * 15);
-        
+
+        // $trip_time_minutes =  $trip_time->format('%s');
+
+        $amount = 100 + (15 * $trip_time);
         
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         
         \Stripe\Charge::create(array(
-            "amount" => 100,
+            "amount" => $amount,
             "currency" => "eur",
             "customer" => $stripe_id
           ));
