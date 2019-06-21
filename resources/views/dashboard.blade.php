@@ -257,8 +257,7 @@ input:checked + .slider:before {
     @endif
 
     <div class="container" id="trip_json">
-      <p class="text-center">Time: <span id="trip_time"></span> seconds.</p>
-      <p class="text-center">Cost: €<span id="trip_cost"></span>.</p>
+    
     </div>
 
     <script>
@@ -314,7 +313,7 @@ input:checked + .slider:before {
                 hours++
               }
             }    
-            console.log(trip_id);
+          
             if ($('#checkbox').prop('checked') == false){
               $.ajax({
             type: "get",
