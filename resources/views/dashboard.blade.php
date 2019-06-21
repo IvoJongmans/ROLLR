@@ -258,14 +258,13 @@ input:checked + .slider:before {
         <h2 id="timer" class="text-center"><span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span></h2>
     </div>
 
-    @endif
-
-
-    <div class="container">
-      <div id="map" class="text-center">
-        
-      </div>
+    <div class="container d-flex justify-content-center">
+        <div id="map">
+          
+        </div>
     </div>
+
+    @endif
 
     <div class="container" id="trip_json">
     
@@ -383,7 +382,7 @@ input:checked + .slider:before {
                   lng: parseFloat(longitude)
               }
           console.log(pos);
-          map.setCenter(pos);
+          // map.setCenter(pos);
           infoWindow.setPosition(pos);
           infoWindow.setContent('Scooter location');
           infoWindow.open(map); 
