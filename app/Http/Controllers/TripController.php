@@ -103,6 +103,8 @@ class TripController extends Controller
 
         $trip_time = floor(($updated_time - $created_time) / 60);
 
+        $trip_time_seconds = $updated_time - $created_time;
+
         $amount = 100 + (15 * $trip_time);
 
         $amount_euro = $amount / 100;
@@ -119,7 +121,7 @@ class TripController extends Controller
 
 
           $trip->amount = $amount_euro;   
-          $trip->time = $trip_time;
+          $trip->time = $trip_time_seconds;
           
           return $trip;
     }
