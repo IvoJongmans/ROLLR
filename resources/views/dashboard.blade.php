@@ -53,9 +53,11 @@ margin-left: -45px; /* Half the width */
   margin:        10px;
   }
 
-.align-vertical {
+{{-- This can be a substitute for the logo --}}
+{{-- .align-vertical {
   line-height: 30px;
 }
+<h2 class="align-vertical">ROLLR</h2> --}}
 
 .switch {
   position: relative;
@@ -125,7 +127,7 @@ input:checked + .slider:before {
 
 <div class="container">
   <div class="row">
-    <div class="col-6 text-left"><h2 class="align-vertical">ROLLR</h2></div>
+    <div class="col-6 text-left my-auto"><img src="/images/rollr_logo.png" style="height:50px;"></div>
     <div class="col-6 text-right">
       <button type="button" class="hamburger-button dropdown-toggle" data-toggle="dropdown">
           <img src="/images/hamburger.png" class="hamburger">
@@ -247,7 +249,7 @@ input:checked + .slider:before {
     @if($user->cc_validated == "yes" && $user->user_validated == "yes")
 
     <div class="container text-center">
-      <p class="text-center">Scooter ID: {{$scooter->id}}</p>
+      <p class="text-center" style="font-size:25px;">Scooter ID: {{$scooter->id}}</p>
     	<label class="switch">
           <input type="checkbox" id="checkbox">
           <span class="slider"></span>
