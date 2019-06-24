@@ -65,26 +65,30 @@
             };
         
         infoWindowArray[index].setPosition(pos);
-        infoWindowArray[index].setContent('Scooter location');
+        infoWindowArray[index].setContent(`scooter location ${index + 1}`);
         infoWindowArray[index].open(map); 
           }
           else {
-            infoWindowArray[index] = new google.maps.InfoWindow;
+            // infoWindowArray[index] = new google.maps.InfoWindow;
             latitude = value['latitude'];
             longitude = value['longitude'];
-            console.log(latitude);
-            console.log(longitude); 
+            console.log('the latitude is' + latitude);
+            console.log('the longitude is' + longitude); 
             var pos = {
                 lat: parseFloat(latitude),
                 lng: parseFloat(longitude)
             }
         infoWindowArray[index].setPosition(pos);
+        infoWindowArray[index].setContent(`scooter location ${index + 1}`);
+        // infoWindowArray[index].open(map);
+        // console.log(infoWindowArray); 
             }
             
         });
       })
     } 
-      // updateMap(); 
+      // updateMap();
+      // updateMap();  
     </script>
     
 
