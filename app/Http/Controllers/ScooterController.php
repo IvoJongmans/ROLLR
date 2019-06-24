@@ -97,12 +97,7 @@ class ScooterController extends Controller
         $scooter->save(); 
     }
     public function retrieve(){
-        // $id = request('id');
-        $scooter = Scooter::findOrFail(1);
-        $returndata = response()->json([
-            'lat' => $scooter->latitude,
-            'lng' => $scooter->longitude,
-        ]);
-        return $returndata; 
+        $scooter = Scooter::all();
+        return response()->json($scooter); 
     }
 }
