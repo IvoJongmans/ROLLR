@@ -97,12 +97,14 @@ class ScooterController extends Controller
         $scooter->save(); 
     }
     public function retrieve(){
-        // $id = request('id');
-        $scooter = Scooter::findOrFail(1);
-        $returndata = response()->json([
-            'lat' => $scooter->latitude,
-            'lng' => $scooter->longitude,
-        ]);
-        return $returndata; 
+        $json = json_decode(file_get_contents('https://portaallovetracking.com/api_po/1.php?api=pl&ver=1.5&key=' . env('API_KEY_TRACKER') . '&cmd=OBJECT_GET_POSITION,*'), true);
+        foreach($json as $tracker){
+            $scooterupdate = Scooter::find(1); 
+            $scooterupdate->latitude = $tracker['lat'];
+            $scooterupdate->longitude = $tracker['lng'];
+            $scooterupdate->save(); 
+        };
+        $scooter = Scooter::all();
+        return response()->json($scooter); 
     }
 }
