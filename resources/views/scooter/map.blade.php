@@ -54,7 +54,7 @@
             $.each(data, function(index, value){
             console.log(index); 
             if (infoWindowArray.length == index){ 
-            infoWindowArray[index] = new google.maps.InfoWindow;
+            
             latitude = value['latitude'];
             longitude = value['longitude'];
             console.log(latitude);
@@ -63,10 +63,16 @@
                 lat: parseFloat(latitude),
                 lng: parseFloat(longitude)
             };
+            infoWindowArray[index] = new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: `Scooter ${index + 1}`,
+            label: `${index + 1}`,
+            });
         
-        infoWindowArray[index].setPosition(pos);
-        infoWindowArray[index].setContent(`scooter location ${index + 1}`);
-        infoWindowArray[index].open(map); 
+        // infoWindowArray[index].setPosition(pos);
+        // // infoWindowArray[index].title(`scooter location ${index + 1}`);
+        // infoWindowArray[index].open(map); 
           }
           else {
             latitude = value['latitude'];
@@ -78,7 +84,6 @@
                 lng: parseFloat(longitude)
             }
         infoWindowArray[index].setPosition(pos);
-        infoWindowArray[index].setContent(`scooter location ${index + 1}`);
             }
             
         });
