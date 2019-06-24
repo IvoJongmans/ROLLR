@@ -69,7 +69,6 @@
         infoWindowArray[index].open(map); 
           }
           else {
-            // infoWindowArray[index] = new google.maps.InfoWindow;
             latitude = value['latitude'];
             longitude = value['longitude'];
             console.log('the latitude is' + latitude);
@@ -80,15 +79,11 @@
             }
         infoWindowArray[index].setPosition(pos);
         infoWindowArray[index].setContent(`scooter location ${index + 1}`);
-        // infoWindowArray[index].open(map);
-        // console.log(infoWindowArray); 
             }
             
         });
       })
     } 
-      // updateMap();
-      // updateMap();  
     </script>
     
 
