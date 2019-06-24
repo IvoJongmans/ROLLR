@@ -294,7 +294,7 @@
     <script>
     markerArray = [];
     
-    setInterval(updateMap, 120000);
+    setInterval(updateMap, 300000);
     function updateMap() {
         URL = "/map/retrieve";
         $.post(URL, undefined, function(data){
