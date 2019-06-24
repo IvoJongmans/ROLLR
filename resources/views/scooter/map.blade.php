@@ -314,8 +314,13 @@
             position: pos,
             map: map,
             title: `Scooter ${index + 1}`,
-            label: `${index + 1}`,
-            icon:  'http://rollr.test/step_icon.png',
+            label: {
+            color: "yellow",
+            fontSize: "20px",
+            fontWeight: "bold",
+            text: `${index + 1}`, 
+            },
+            icon: '/step_icon.png',
             });
         
         // infoWindowArray[index].setPosition(pos);
