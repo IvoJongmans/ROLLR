@@ -7,7 +7,7 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 100%; 
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -315,6 +315,7 @@
             map: map,
             title: `Scooter ${index + 1}`,
             label: `${index + 1}`,
+            icon:  'http://rollr.test/step_icon.png',
             });
         
         // infoWindowArray[index].setPosition(pos);
@@ -336,9 +337,6 @@
       })
     } 
     </script>
-    
-
-
 
 
 
