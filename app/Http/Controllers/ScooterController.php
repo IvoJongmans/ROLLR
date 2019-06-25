@@ -87,15 +87,15 @@ class ScooterController extends Controller
     public function map(){
         return view('scooter/map'); 
     }
-    public function send(){
-        return view('scooter/send');
-    }
-    public function storelocation(){
-        $scooter = Scooter::find(1);
-        $scooter->latitude = request('latitude');
-        $scooter->longitude = request('longitude');  
-        $scooter->save(); 
-    }
+    // public function send(){
+    //     return view('scooter/send');
+    // }
+    // public function storelocation(){
+    //     $scooter = Scooter::find(1);
+    //     $scooter->latitude = request('latitude');
+    //     $scooter->longitude = request('longitude');  
+    //     $scooter->save(); 
+    // }
     public function retrieve(){
         $json = json_decode(file_get_contents('https://portaallovetracking.com/api_po/1.php?api=pl&ver=1.5&key=' . env('API_KEY_TRACKER') . '&cmd=OBJECT_GET_POSITION,*'), true);
         foreach($json as $tracker){
