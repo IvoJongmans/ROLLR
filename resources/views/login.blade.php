@@ -68,7 +68,10 @@ margin-left: -45px; /* Half the width */
       
         <div class="form-row">
           <button class="custom-button" style="margin-top:20px;">Login</button>
-          <a href="/register">Register</a>
+        </div>
+
+        <div class="form-row">
+          <p>Don't have an account yet? Please<a href="/register"> register</a>.</p>  
         </div>
       </form>
 </div>

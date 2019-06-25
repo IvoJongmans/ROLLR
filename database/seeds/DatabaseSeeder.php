@@ -14,8 +14,7 @@ class DatabaseSeeder extends Seeder
         App\Scooter::insert([            
             'latitude' => 0,
             'longitude' => 0,
-            'imei' => '789456'
-        ]);
-        
+            'imei' => '7018031596'
+        ]);               
     }
 }

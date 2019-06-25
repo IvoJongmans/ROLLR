@@ -38,9 +38,6 @@ Route::get('/scooter/{scooter}/stoptrip/{trip}', 'TripController@stop_trip')->na
 Route::get('map', 'ScooterController@map');
 Route::post('map/retrieve', 'ScooterController@retrieve');
 
-//routes to the scanned QR-code page
-// Route::get('scooter/{scooter}', 'ScooterController@show')->middleware('guest');
-
 //logout
 Route::get('/logout', 'LogoutController@logout')->name('logout');
 
@@ -52,21 +49,26 @@ Route::post('/stripe/verify_cc', 'StripeCreditcardVerifyController@handle');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('scooter/{scooter}/register', 'UserRegisterController@index');
-Route::post('scooter/{scooter}/register', 'UserRegisterController@store');
-
-
-Route::post('scooter/{scooter}/login', 'UserLoginController@login');
-
-Route::get('scooter/{scooter}/verify/{user}', 'VerifyUserController@verify')->middleware('auth');
-
-
-Route::get('scooter/{scooter}/user/{user}', 'UserController@dashboard')->name('dashboard')->middleware('auth');
-
-
 //API
 Route::get('/verify/{user}', 'VerifyUserController@handle')->middleware('auth');
 Route::get('/verify/cc/{user}', 'VerifyCreditcardController@handle');
+
+
+// Route::get('scooter/{scooter}/register', 'UserRegisterController@index');
+// Route::post('scooter/{scooter}/register', 'UserRegisterController@store');
+
+
+// Route::post('scooter/{scooter}/login', 'UserLoginController@login');
+
+// Route::get('scooter/{scooter}/verify/{user}', 'VerifyUserController@verify')->middleware('auth');
+
+
+// Route::get('scooter/{scooter}/user/{user}', 'UserController@dashboard')->name('dashboard')->middleware('auth');
+
+
+//API
+// Route::get('/verify/{user}', 'VerifyUserController@handle')->middleware('auth');
+// Route::get('/verify/cc/{user}', 'VerifyCreditcardController@handle');
 
 
 
