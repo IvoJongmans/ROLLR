@@ -45,7 +45,7 @@ margin-left: -45px; /* Half the width */
 </div>
 
 <div class="container">
-    <form action="/scooter/{{$scooter->id}}/login" method="post">
+    <form action="/login" method="post">
         @csrf
         <div class="form-row">
           <label for="phone_number">
@@ -64,11 +64,11 @@ margin-left: -45px; /* Half the width */
             {{ Session::get('nomatch')}}
         </p>
         @endif
-    
-        <input type="hidden" name="scooter_id" value="{{$scooter->id}}">
+  
       
         <div class="form-row">
           <button class="custom-button" style="margin-top:20px;">Login</button>
+          <a href="/register">Register</a>
         </div>
       </form>
 </div>

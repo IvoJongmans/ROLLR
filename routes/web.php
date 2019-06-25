@@ -16,6 +16,24 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/account', 'AccountController@index');
+
+Route::get('/creditcard', 'CreditcardController@show')->middleware('auth');
+
+Route::post('/creditcard', 'CreditcardController@addCard')->middleware('auth');
+
+
+Route::get('/login', 'UserLoginController@index');
+
+Route::post('/login', 'UserLoginController@login');
+
+//routes to the scanned QR-code page
+Route::get('scooter/{scooter}', 'ScooterController@show'); 
+
+//logout
+Route::get('/logout', 'LogoutController@logout')->name('logout');
+
 // route map all scooters 
 Route::get('map', 'ScooterController@map');
 Route::get('map/send', 'ScooterController@send');
@@ -23,7 +41,7 @@ Route::post('map/storelocation', 'ScooterController@storelocation');
 Route::post('map/retrieve', 'ScooterController@retrieve');
 
 //routes to the scanned QR-code page
-Route::get('scooter/{scooter}', 'ScooterController@show');
+// Route::get('scooter/{scooter}', 'ScooterController@show')->middleware('guest');
 
 //logout
 Route::get('/logout', 'LogoutController@logout')->name('logout');
@@ -39,22 +57,51 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('scooter/{scooter}/register', 'UserRegisterController@index');
 Route::post('scooter/{scooter}/register', 'UserRegisterController@store');
 
-Route::get('scooter/{scooter}/login', 'UserLoginController@index');
+
 Route::post('scooter/{scooter}/login', 'UserLoginController@login');
 
 Route::get('scooter/{scooter}/verify/{user}', 'VerifyUserController@verify')->middleware('auth');
-Route::post('/scooter/{scooter}/user/{user}/cc_verify', 'VerifyUserCreditcardController@verify')->middleware('auth');
+
 
 Route::get('scooter/{scooter}/user/{user}', 'UserController@dashboard')->name('dashboard')->middleware('auth');
 
 
 //API
-Route::get('/verify/{user}', 'VerifyUserController@handle');
+Route::get('/verify/{user}', 'VerifyUserController@handle')->middleware('auth');
 Route::get('/verify/cc/{user}', 'VerifyCreditcardController@handle');
 
 //TRIP API
 Route::get('/scooter/{scooter}/user/{user}/starttrip', 'TripController@start_trip')->name('start_trip');
 Route::get('/scooter/{scooter}/user/{user}/stoptrip/{trip}', 'TripController@stop_trip')->name('stop_trip');
 
+// Authentication Routes...
+  
+  // Password Reset Routes...
+  Route::post('password/email', [
+    'as' => 'password.email',
+    'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail'
+  ]);
+  Route::get('password/reset', [
+    'as' => 'password.request',
+    'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm'
+  ]);
+  Route::post('password/reset', [
+    'as' => 'password.update',
+    'uses' => 'Auth\ResetPasswordController@reset'
+  ]);
+  Route::get('password/reset/{token}', [
+    'as' => 'password.reset',
+    'uses' => 'Auth\ResetPasswordController@showResetForm'
+  ]);
+  
+  // Registration Routes...
+  Route::get('register', [
+    'as' => 'register',
+    'uses' => 'UserRegisterController@index'
+  ]);
+  Route::post('register', [
+    'as' => '',
+    'uses' => 'UserRegisterController@store'
+  ]);
 
-Auth::routes();
+// Auth::routes();

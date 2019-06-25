@@ -43,11 +43,10 @@ margin-left: -45px; /* Half the width */
     <div class="container">
 
       <div class="text-center">
-          <h2 text-center>Step Up</h2>
-          <p>Scooter ID: {{$scooter->id}}</p>
+          <h2 text-center>ROLLR</h2>
       </div>
 
-      <form action="/scooter/{{$scooter->id}}/register" method="post" id="payment-form" oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "Passwords do not match." : "")'>
+      <form action="/register" method="post" id="payment-form" oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "Passwords do not match." : "")'>
         @csrf
         <div class="form-row">
           <label for="cell_number">
@@ -67,8 +66,6 @@ margin-left: -45px; /* Half the width */
             </label>
                 <input type="password" class="form-control" id="confirm_password" minlength="8" required>
         </div>
-        <!--IS THIS THE RIGHT WAY? -->
-        <input type="hidden" name="scooter_id" value="{{$scooter->id}}">
       
         <div class="form-row">
           <button class="custom-button" style="margin-top:20px;">Submit Details</button>

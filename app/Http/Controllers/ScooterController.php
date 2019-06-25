@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Scooter;
 use Illuminate\Http\Request;
 use Stripe;
+use Auth;
+use Session;
 
 class ScooterController extends Controller
 {
@@ -47,8 +49,13 @@ class ScooterController extends Controller
      */
     public function show(Scooter $scooter)
     {
-        
+        Session::put('scooter', $scooter);
+        if(Auth::guest()) {
+            return redirect('/login');
+        }
+        else {
         return view('scooter', compact('scooter'));
+        }
     }
 
     /**

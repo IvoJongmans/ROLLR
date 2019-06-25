@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class LogoutController extends Controller
 {
@@ -10,6 +11,5 @@ class LogoutController extends Controller
         
         auth()->logout();
         
-        return redirect('/scooter/1');
     }
 }

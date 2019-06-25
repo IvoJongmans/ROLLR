@@ -12,11 +12,16 @@ use Session;
 
 class UserLoginController extends Controller
 {
-    public function index(Scooter $scooter){
-        return view('login', compact('scooter'));
+    public function index(){
+        return view('login');
     }
 
-    public function login(Scooter $scooter, Request $request){
+
+
+
+
+
+    public function login(Request $request){
 
         $database_password = User::where('cell_number', $request->cell_number)->value('password');
         $user_id = User::where('cell_number', $request->cell_number)->value('id');
@@ -25,13 +30,13 @@ class UserLoginController extends Controller
         if (Hash::check($request->password, $database_password)) {
             Auth::loginUsingId($user_id);
             if (Auth::check()) {
-                return redirect('scooter/'.$scooter->id.'/user/'.$user_id);
+                return redirect('/account');
             }
             
         }
         else {
             Session::flash("nomatch", "This combination of cellphone number and password doesn't exist.");
-            return redirect('scooter/'.$scooter->id.'/login');
+            return redirect('/login');
         }
     }
 }
