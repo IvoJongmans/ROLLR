@@ -79,7 +79,7 @@ body {
         </div>
     </div>
 
-    <p class="text-center">Cell number: {{Auth::user()->cell_number}}</p><br/>
+    
     
    
 
