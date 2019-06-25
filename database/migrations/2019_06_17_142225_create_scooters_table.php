@@ -15,11 +15,11 @@ class CreateScootersTable extends Migration
     {
         Schema::create('scooters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('location');
             $table->string('availability')->default('free');
             $table->timestamps();
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
+            $table->string('imei');
+            $table->decimal('latitude', 10, 8)->default(0);
+            $table->decimal('longitude', 11, 8)->default(0); 
         });
     }
 

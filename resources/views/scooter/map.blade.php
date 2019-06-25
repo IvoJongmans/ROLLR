@@ -300,8 +300,7 @@
         $.post(URL, undefined, function(data){
             $.each(data, function(index, value){
             console.log(index); 
-            if (markerArray.length == index){ 
-            
+            if (markerArray.length == index){           
             latitude = value['latitude'];
             longitude = value['longitude'];
             console.log(latitude);
@@ -322,10 +321,6 @@
             },
             icon: '/step_icon.png',
             });
-        
-        // infoWindowArray[index].setPosition(pos);
-        // // infoWindowArray[index].title(`scooter location ${index + 1}`);
-        // infoWindowArray[index].open(map); 
           }
           else {
             latitude = value['latitude'];
