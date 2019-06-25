@@ -20,18 +20,14 @@ Route::get('/', function () {
 Route::get('/account', 'AccountController@index');
 
 Route::get('/creditcard', 'CreditcardController@show')->middleware('auth');
-
 Route::post('/creditcard', 'CreditcardController@addCard')->middleware('auth');
 
-
 Route::get('/login', 'UserLoginController@index');
-
 Route::post('/login', 'UserLoginController@login');
 
 //routes to the scanned QR-code page
 Route::get('scooter/{scooter}', 'ScooterController@show'); 
 
-//logout
 Route::get('/logout', 'LogoutController@logout')->name('logout');
 
 //TRIP API
