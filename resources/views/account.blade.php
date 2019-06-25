@@ -11,6 +11,6 @@
     {{Auth::user()->id}} <br/>
     {{Auth::user()->user_validated}} <br/>
     {{Auth::user()->cc_validated}} <a href="/creditcard">ADD CC</a> <br/>
-    {{Session::get('scooter')->id}}
+{{Session::get('scooter')->id}} <a href="/scooter/{{Session::get('scooter')->id}}">Start Trip</a> <br/>
 
 @endsection

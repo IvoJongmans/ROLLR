@@ -34,6 +34,10 @@ Route::get('scooter/{scooter}', 'ScooterController@show');
 //logout
 Route::get('/logout', 'LogoutController@logout')->name('logout');
 
+//TRIP API
+Route::get('/scooter/{scooter}/starttrip', 'TripController@start_trip')->name('start_trip');
+Route::get('/scooter/{scooter}/stoptrip/{trip}', 'TripController@stop_trip')->name('stop_trip');
+
 // route map all scooters 
 Route::get('map', 'ScooterController@map');
 // Route::get('map/send', 'ScooterController@send');
@@ -70,9 +74,7 @@ Route::get('scooter/{scooter}/user/{user}', 'UserController@dashboard')->name('d
 Route::get('/verify/{user}', 'VerifyUserController@handle')->middleware('auth');
 Route::get('/verify/cc/{user}', 'VerifyCreditcardController@handle');
 
-//TRIP API
-Route::get('/scooter/{scooter}/user/{user}/starttrip', 'TripController@start_trip')->name('start_trip');
-Route::get('/scooter/{scooter}/user/{user}/stoptrip/{trip}', 'TripController@stop_trip')->name('stop_trip');
+
 
 // Authentication Routes...
   
