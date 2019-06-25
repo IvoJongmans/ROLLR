@@ -311,14 +311,14 @@
                 lng: parseFloat(longitude)
             };
             markerArray[index] = new google.maps.Marker({
-            position: pos,
-            map: map,
-            title: `Scooter ${index + 1}`,
-            label: {
-            color: "yellow",
-            fontSize: "20px",
-            fontWeight: "bold",
-            text: `${index + 1}`, 
+              position: pos,
+              map: map,
+              title: `Scooter ${index + 1}`,
+              label: {
+              color: "yellow",
+              fontSize: "20px",
+              fontWeight: "bold",
+              text: `${index + 1}`, 
             },
             icon: '/step_icon.png',
             });
