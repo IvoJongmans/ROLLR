@@ -90,7 +90,9 @@ body {
     @if(Auth::user()->cc_validated == "yes" && Session::has('scooter'))
         <div class="text-center">
             <a href="scooter/{{Session::get('scooter')->id}}"><button class="custom-button" style="margin-top:20px;">Start Trip on scooter {{Session::get('scooter')->id}} </button></a>
-        </div>
+        </div> 
+    
+    
     @endif
     
    
