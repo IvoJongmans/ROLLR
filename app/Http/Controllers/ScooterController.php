@@ -87,16 +87,20 @@ class ScooterController extends Controller
     public function map(){
         return view('scooter/map'); 
     }
-    public function send(){
-        return view('scooter/send');
-    }
-    public function storelocation(){
-        $scooter = Scooter::find(1);
-        $scooter->latitude = request('latitude');
-        $scooter->longitude = request('longitude');  
-        $scooter->save(); 
-    }
+    // public function send(){
+    //     return view('scooter/send');
+    // }
+    // public function storelocation(){
+    //     $scooter = Scooter::find(1);
+    //     $scooter->latitude = request('latitude');
+    //     $scooter->longitude = request('longitude');  
+    //     $scooter->save(); 
+    // }
     public function retrieve(){
+        $timecheck = Scooter::oldest('updated_at')->get();
+        if(
+            (time() - strtotime($timecheck[0]['updated_at'])) > 310
+            ){
         $json = json_decode(file_get_contents('https://portaallovetracking.com/api_po/1.php?api=pl&ver=1.5&key=' . env('API_KEY_TRACKER') . '&cmd=OBJECT_GET_POSITION,*'), true);
         foreach($json as $tracker){
             $scooterupdate = Scooter::find(1); 
@@ -105,6 +109,10 @@ class ScooterController extends Controller
             $scooterupdate->save(); 
         };
         $scooter = Scooter::all();
-        return response()->json($scooter); 
+        return response()->json($scooter);
+    } else {
+        $scooter = Scooter::all();
+        return response()->json($scooter);
+    }
     }
 }
