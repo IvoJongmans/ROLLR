@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Stripe;
 
 class VerifyUserCreditcardController extends Controller
 {
@@ -11,7 +12,7 @@ class VerifyUserCreditcardController extends Controller
 
         $stripe_id = User::where('id', $user)->value('stripe_id');
 
-        \Stripe\Stripe::setApiKey('sk_test_PTJVEcRxvyPpiuqtrhdPH6KW00IsgKLAms');
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $token = $_POST['stripeToken'];
 
