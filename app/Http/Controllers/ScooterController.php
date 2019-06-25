@@ -94,7 +94,8 @@ class ScooterController extends Controller
             ){
         $json = json_decode(file_get_contents('https://portaallovetracking.com/api_po/1.php?api=pl&ver=1.5&key=' . env('API_KEY_TRACKER') . '&cmd=OBJECT_GET_POSITION,*'), true); 
         foreach($json as $key => $tracker){
-            $scooterupdate = Scooter::where('imei', '=', $key)->get(); // NEEDS MODIFYING FOR MORE SCOOOTERS WITH IMEI NUMBERS
+            $scooterid = Scooter::where('imei', '=', $key)->first()->id;  
+            $scooterupdate = Scooter::find($scooterid);
             $scooterupdate->latitude = $tracker['lat'];
             $scooterupdate->longitude = $tracker['lng'];
             $scooterupdate->save(); 
