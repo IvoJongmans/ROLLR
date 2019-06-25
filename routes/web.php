@@ -36,9 +36,9 @@ Route::get('/logout', 'LogoutController@logout')->name('logout');
 
 // route map all scooters 
 Route::get('map', 'ScooterController@map');
-Route::get('map/send', 'ScooterController@send');
-Route::post('map/storelocation', 'ScooterController@storelocation');
-Route::post('map/retrieve', 'ScooterController@retrieve');
+// Route::get('map/send', 'ScooterController@send');
+// Route::post('map/storelocation', 'ScooterController@storelocation');
+Route::get('map/retrieve', 'ScooterController@retrieve');
 
 //routes to the scanned QR-code page
 // Route::get('scooter/{scooter}', 'ScooterController@show')->middleware('guest');
