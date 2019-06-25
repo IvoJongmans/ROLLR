@@ -140,113 +140,9 @@ input:checked + .slider:before {
       </div>
     </div>
   </div>
-</div>
+</div>  
 
-
-    <div class="container text-right">
-      {{-- <button href="{{ route('logout', compact('scooter')) }}"><button class="custom-button">Logout</button></button> --}}
-      {{-- <h2 class="text-center">Welcome to ROLLR</h2> --}}
-      {{-- <p class="text-center">{{$user->cell_number}}</p> --}}
-    </div>
-
-    @if($user->cc_validated == "no")
-
-    <div class="container">
-        <form action="/scooter/{{$scooter->id}}/user/{{$user->id}}/cc_verify" method="post" id="payment-form">
-            @csrf        
-            <div class="form-row">
-              <label for="card-element">
-                Credit or debit card
-              </label>
-              <div id="card-element" class="form-control">
-                <!-- A Stripe Element will be inserted here. -->
-              </div>    
-            </div>  
-            <div class="form-row">
-              <button class="custom-button" style="margin-top:20px;">Submit Details</button>
-            </div>
-          </form>
-    </div>
     
-    
-
-    <script>
-
-            // Create a Stripe client.
-            var stripe = Stripe('pk_test_9GgUgNx8TfFAFPLEQWW5P4Hw00qF0wNQYJ');
-            
-            // Create an instance of Elements.
-            var elements = stripe.elements();
-            
-            // Custom styling can be passed to options when creating an Element.
-            // (Note that this demo uses a wider set of styles than the guide below.)
-            var style = {
-              base: {
-                color: '#32325d',
-                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                fontSmoothing: 'antialiased',
-                fontSize: '16px',
-                '::placeholder': {
-                  color: '#aab7c4'
-                }
-              },
-              invalid: {
-                color: '#fa755a',
-                iconColor: '#fa755a'
-              }
-            };
-            
-            // Create an instance of the card Element.
-            var card = elements.create('card', {style: style});
-            
-            // Add an instance of the card Element into the `card-element` <div>.
-            card.mount('#card-element');
-            
-            // Handle real-time validation errors from the card Element.
-            card.addEventListener('change', function(event) {
-              var displayError = document.getElementById('card-errors');
-              if (event.error) {
-                displayError.textContent = event.error.message;
-              } else {
-                displayError.textContent = '';
-              }
-            });
-            
-            // Handle form submission.
-            var form = document.getElementById('payment-form');
-            form.addEventListener('submit', function(event) {
-              event.preventDefault();
-            
-              stripe.createToken(card).then(function(result) {
-                if (result.error) {
-                  // Inform the user if there was an error.
-                  var errorElement = document.getElementById('card-errors');
-                  errorElement.textContent = result.error.message;
-                } else {
-                  // Send the token to your server.
-                  stripeTokenHandler(result.token);
-                }
-              });
-            });
-            
-            // Submit the form with the token ID.
-            function stripeTokenHandler(token) {
-              // Insert the token ID into the form so it gets submitted to the server
-              var form = document.getElementById('payment-form');
-              var hiddenInput = document.createElement('input');
-              hiddenInput.setAttribute('type', 'hidden');
-              hiddenInput.setAttribute('name', 'stripeToken');
-              hiddenInput.setAttribute('value', token.id);
-              form.appendChild(hiddenInput);
-            
-              // Submit the form
-              form.submit();
-            }           
-      </script>
-
-    @endif
-
-    @if($user->cc_validated == "yes" && $user->user_validated == "yes")
 
     <div class="container text-center">
       <p class="text-center" style="font-size:25px;">Scooter ID: {{$scooter->id}}</p>
@@ -257,7 +153,6 @@ input:checked + .slider:before {
         <h2 id="timer" class="text-center"><span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span></h2>
     </div>
 
-    @endif
 
     <div class="container" id="trip_json">
     
@@ -273,7 +168,7 @@ input:checked + .slider:before {
         if($('#checkbox').prop('checked') == true) {
           $.ajax({
             type: "get",
-            url: "/scooter/{{$scooter->id}}/user/{{$user->id}}/starttrip",
+            url: "/scooter/{{$scooter->id}}/starttrip",
             success:function(data)
             {
                 
@@ -320,7 +215,7 @@ input:checked + .slider:before {
             if ($('#checkbox').prop('checked') == false){
               $.ajax({
             type: "get",
-            url: "/scooter/{{$scooter->id}}/user/{{$user->id}}/stoptrip/"+ trip_id,
+            url: "/scooter/{{$scooter->id}}/stoptrip/"+ trip_id,
             success:function(data)
             {
               $('#trip_json').html(`<p class="text-center">Time: ${data['time']} seconds.</p>

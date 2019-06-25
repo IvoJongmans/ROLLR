@@ -90,7 +90,7 @@ margin-left: -45px; /* Half the width */
 <script>
 
 // Create a Stripe client.
-var stripe = Stripe('pk_test_9GgUgNx8TfFAFPLEQWW5P4Hw00qF0wNQYJ');
+var stripe = Stripe('{{env('STRIPE_KEY')}}');
 
 // Create an instance of Elements.
 var elements = stripe.elements();

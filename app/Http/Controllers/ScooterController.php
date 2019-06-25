@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Scooter;
 use Illuminate\Http\Request;
 use Stripe;
+use Auth;
+use Session;
 
 class ScooterController extends Controller
 {
@@ -47,8 +49,13 @@ class ScooterController extends Controller
      */
     public function show(Scooter $scooter)
     {
-        
-        return view('scooter', compact('scooter'));
+        Session::put('scooter', $scooter);
+        if(Auth::guest()) {
+            return redirect('/login');
+        }
+        else {
+        return view('dashboard', compact('scooter'));
+        }
     }
 
     /**
@@ -87,6 +94,7 @@ class ScooterController extends Controller
     public function map(){
         return view('scooter/map'); 
     }
+
     public function retrieve(){
         $timecheck = Scooter::oldest('updated_at')->get();
         if(
@@ -101,10 +109,10 @@ class ScooterController extends Controller
             $scooterupdate->save(); 
         };
         $scooter = Scooter::all();
-        return response()->json($scooter);
-    } else {
-        $scooter = Scooter::all();
-        return response()->json($scooter);
-    }
+        return response()->json($scooter); 
+        } else {   
+          $scooter = Scooter:all();
+          return response()->json($scooter);
+          
     }
 }

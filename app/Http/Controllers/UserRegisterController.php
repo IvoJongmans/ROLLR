@@ -8,21 +8,21 @@ use Illuminate\Support\Facades\Auth;
 use App\Scooter;
 use App\User;
 use Stripe;
+use Session;
 
 class UserRegisterController extends Controller
 {
     public function index(Scooter $scooter) {
 
-        return view('register', compact('scooter'));
+        return view('register');
     }
 
-    public function store(Request $request, Scooter $scooter) {
+    public function store(Request $request) {
 
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $customer = \Stripe\Customer::create([
             "phone" => $request->cell_number,
             "description" => "Customer for stepup.com",
-            "metadata" => ["scooter_id" => $request->scooter_id]
           ]);
 
         $user = User::create([
@@ -37,9 +37,8 @@ class UserRegisterController extends Controller
         if (Hash::check($request->password, $database_password)) {
             Auth::loginUsingId($user_id);
             if (Auth::check()) {
-                return view('verify_user', compact('scooter', 'user'));
-            }
-            
+                return redirect('/account');
+            }            
         }
         
 

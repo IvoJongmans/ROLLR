@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Scooter;
 use App\User;
 use Stripe;
+use Auth;
 
 class TripController extends Controller
 {
@@ -87,13 +88,13 @@ class TripController extends Controller
         //
     }
 
-    public function start_trip(Scooter $scooter, User $user){
+    public function start_trip(Scooter $scooter){
         
-        $trip = Trip::create(['scooter_id' => $scooter->id, 'user_id' => $user->id]);
+        $trip = Trip::create(['scooter_id' => $scooter->id, 'user_id' => Auth::user()->id]);
         return $trip->id;
     }
 
-    public function stop_trip(Scooter $scooter, User $user, Trip $trip){
+    public function stop_trip(Scooter $scooter, Trip $trip){
         
         Trip::where('id', $trip->id)->update(['updated_at' => \Carbon\Carbon::now()]);     
 
@@ -109,7 +110,7 @@ class TripController extends Controller
 
         $amount_euro = number_format($amount / 100, 2);
 
-        $stripe_id = User::where('id', $user->id)->value('stripe_id');
+        $stripe_id = Auth::user()->stripe_id;
         
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         

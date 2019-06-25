@@ -62,7 +62,7 @@ img {
             success:function(data)
             {
                 if(data == 'user validated') {
-                    window.location = "{{ route('dashboard', compact('scooter', 'user')) }}";
+                    window.location = "/account";
                     console.log('User Verified');
                 }
             }
