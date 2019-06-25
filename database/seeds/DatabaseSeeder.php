@@ -11,30 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        App\Scooter::insert([
-            'location' => 'Assen',
+        App\Scooter::insert([            
             'latitude' => 0,
             'longitude' => 0,
+            'imei' => '789456'
         ]);
-        App\Scooter::insert([
-            'location' => 'Assen',
-            'latitude' => 0,
-            'longitude' => 0,
-        ]);
-        App\Scooter::insert([
-            'location' => 'Assen',
-            'latitude' => 0,
-            'longitude' => 0,
-        ]);
-        App\Scooter::insert([
-            'location' => 'Assen',
-            'latitude' => 0,
-            'longitude' => 0,
-        ]);
-        App\Scooter::insert([
-            'location' => 'Assen',
-            'latitude' => 0,
-            'longitude' => 0,
-        ]);
+        
     }
 }
