@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Geolocation</title>
+    <title>ROLLR - View our scooters</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
