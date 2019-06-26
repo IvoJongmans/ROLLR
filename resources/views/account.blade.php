@@ -67,7 +67,7 @@ body {
             <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="#">Billing History</a>
             <a class="dropdown-item" href="#">Routes</a>
-            <a class="dropdown-item" href="{{ route('logout', compact('scooter')) }}">Logout</a>
+            <a class="dropdown-item" href="/logout">Logout</a>
             </div>
         </div>
         </div>
