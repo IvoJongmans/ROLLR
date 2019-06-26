@@ -39,7 +39,7 @@
               color: "yellow",
               fontSize: "20px",
               fontWeight: "bold",
-              text: `${value['id']}`, 
+              text: `${value['id']}`,
             },
             icon: '/step_icon_notfree.png',
             });
@@ -60,6 +60,9 @@
         else {'/step_icon_notfree.png'};
         markerArray[index].setPosition(pos);
             }
+            google.maps.event.addListener(markerArray[index], 'click', function() {
+              window.location.href = `/scooter/${value['id']}`
+          });
         });
       })
     }
