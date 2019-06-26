@@ -20,12 +20,12 @@
             markerArray[index] = new google.maps.Marker({
               position: pos,
               map: map,
-              title: `Scooter ${index + 1}`,
+              title: `${value['id']}`,
               label: {
               color: "yellow",
               fontSize: "20px",
               fontWeight: "bold",
-              text: `${index + 1}`, 
+              text: `${value['id']}`, 
             },
             icon: '/step_icon.png',
             });
@@ -34,12 +34,12 @@
             markerArray[index] = new google.maps.Marker({
               position: pos,
               map: map,
-              title: `Scooter ${index + 1}`,
+              title: `${value['id']}`,
               label: {
               color: "yellow",
               fontSize: "20px",
               fontWeight: "bold",
-              text: `${index + 1}`, 
+              text: `${value['id']}`, 
             },
             icon: '/step_icon_notfree.png',
             });
