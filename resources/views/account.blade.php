@@ -93,6 +93,13 @@ body {
         </div>
     @endif
 
+   @if(!Session::has('scooter'))
+   <div class="text-center">
+      <a href="/map"><button class="custom-button" style="margin-top:20px;">Show scooters on map</button></a>
+    </div>
+   @endif
+
+
 <img src="/images/scooter.png" class="fix">
 
 @endsection
