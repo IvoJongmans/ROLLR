@@ -48,11 +48,11 @@ margin-left: -45px; /* Half the width */
 
       <form action="/register" method="post" id="payment-form" oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "Passwords do not match." : "")'>
         @csrf
-        <div class="form-row">
-          <label for="cell_number">
-            Cell Phone Number:
-          </label>
-          <input class="form-control" type="text" name="cell_number" id="cell_number" placeholder="+31612341234" required>
+        <p style="margin-bottom: 8px;">
+          Cell Phone Number:
+        </p>
+        <div class="form-row">         
+          <input class="form-control" type="tel" name="cell_number" id="phone" placeholder="+31612341234" required style="width:100%">
         </div>
         <div class="form-row">
           <label for="password">
@@ -75,6 +75,13 @@ margin-left: -45px; /* Half the width */
     </div>
 
     <img src="/images/scooter.png" class="fix">
+
+    <script src="js/intlTelInput.js"></script>
+
+    <script>
+      var input = document.querySelector("#phone");
+      window.intlTelInput(input);
+    </script>
 
     <script>
 
