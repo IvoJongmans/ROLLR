@@ -51,7 +51,7 @@ class ScooterController extends Controller
     {
         Session::put('scooter', $scooter);
         if(Auth::guest()) {
-            return redirect('/login');
+            return redirect('/login', 302, [], true);      //redirect('/', 302, [], true)
         }
         else {
         return view('dashboard', compact('scooter'));

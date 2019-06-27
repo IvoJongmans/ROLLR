@@ -15,6 +15,13 @@ class DatabaseSeeder extends Seeder
             'latitude' => 0,
             'longitude' => 0,
             'imei' => '7018031596'
-        ]);               
+        ]);    
+
+        App\Scooter::insert([            
+            'latitude' => 0,
+            'longitude' => 0,
+            'imei' => ''
+        ]);    
+
     }
 }
