@@ -35,6 +35,10 @@ height: 90px;
 margin-top: -45px; /* Half the height */
 margin-left: -45px; /* Half the width */
 }
+
+li {
+  color:black;
+}
     
 @endsection
 
