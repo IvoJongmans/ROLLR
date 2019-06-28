@@ -80,8 +80,14 @@ body {
     </div>
 
     <p class="text-center">Cell number: {{Auth::user()->cell_number}}</p><br/>
+
+    @if(Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'no')
+        <div class="text-center">
+            Please verify cell number: <a href="/retryverifysms"><button class="custom-button" style="margin-top:20px;">Verify SMS</button></a>
+        </div>
+    @endif
     
-    @if(Auth::user()->user_validated == 'yes' && Auth::user()->cc_validated == 'no')
+    @if(Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && Auth::user()->cc_validated == 'no' )
     <div class="text-center">
         Please add a creditcard: <a href="/creditcard"><button class="custom-button" style="margin-top:20px;">Add Creditcard</button></a>
     </div>
@@ -90,14 +96,12 @@ body {
     @if(Auth::user()->cc_validated == "yes" && Session::has('scooter'))
         <div class="text-center">
             <a href="scooter/{{Session::get('scooter')->id}}"><button class="custom-button" style="margin-top:20px;">Start Trip on scooter {{Session::get('scooter')->id}} </button></a>
-        </div> 
-    
-    
+        </div>     
     @endif
     
    
 
-   @if(!Session::has('scooter'))
+   @if(!Session::has('scooter') && Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && Auth::user()->cc_validated == 'yes')
    <div class="text-center">
       <a href="/map"><button class="custom-button" style="margin-top:20px;">Show scooters on map</button></a>
     </div>

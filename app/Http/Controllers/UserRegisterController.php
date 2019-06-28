@@ -9,6 +9,7 @@ use App\Scooter;
 use App\User;
 use Stripe;
 use Session;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class UserRegisterController extends Controller
 {
@@ -18,6 +19,20 @@ class UserRegisterController extends Controller
     }
 
     public function store(Request $request) {
+
+        function generatePIN($digits = 4){
+            $i = 0; //counter
+            $pin = ""; //our default pin is blank.
+            while($i < $digits){
+                //generate a random number between 0 and 9.
+                $pin .= mt_rand(0, 9);
+                $i++;
+            }
+            return $pin;
+        }
+         
+        //If I want a 4-digit PIN code.
+        $pin = generatePIN();
 
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         $customer = \Stripe\Customer::create([
@@ -29,18 +44,26 @@ class UserRegisterController extends Controller
             'cell_number' => $request->cell_number,
             'password' => bcrypt($request->password),
             'stripe_id' => $customer->id,
+            'pin' => bcrypt($pin),
         ]);      
 
         $database_password = User::where('cell_number', $request->cell_number)->value('password');
         $user_id = User::where('cell_number', $request->cell_number)->value('id');
+        $cell_number = ltrim($user->cell_number, '+');
+
+        Nexmo::message()->send([
+            'to'   =>  $cell_number,
+            'from' => 'NEXMO',
+            'text' => 'Welcome to ROLLR! This is your personal verification code: '.$pin
+        ]);
         
         if (Hash::check($request->password, $database_password)) {
             Auth::loginUsingId($user_id);
             if (Auth::check()) {
-                return redirect('/account');
+                return view('verifysms');
             }            
         }
-        
+
 
     // return view('verify_user', compact('scooter', 'user'));
     
