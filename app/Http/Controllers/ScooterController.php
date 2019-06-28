@@ -17,7 +17,7 @@ class ScooterController extends Controller
      */
     public function index()
     {
-        //
+        return redirect()->back(); 
     }
 
     /**
@@ -27,7 +27,7 @@ class ScooterController extends Controller
      */
     public function create()
     {
-        //
+        return redirect()->back(); 
     }
 
     /**
@@ -38,7 +38,7 @@ class ScooterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->back(); 
     }
 
     /**
@@ -66,7 +66,7 @@ class ScooterController extends Controller
      */
     public function edit(Scooter $scooter)
     {
-        //
+        return redirect()->back(); 
     }
 
     /**
@@ -78,7 +78,7 @@ class ScooterController extends Controller
      */
     public function update(Request $request, Scooter $scooter)
     {
-        //
+        return redirect()->back(); 
     }
 
     /**
@@ -89,32 +89,14 @@ class ScooterController extends Controller
      */
     public function destroy(Scooter $scooter)
     {
-        //
+        return redirect()->back(); 
     }
     public function map(){
         return view('scooter/map'); 
     }
 
-    public function retrieve(){
-        $timecheck = Scooter::oldest('updated_at')->get();
-        if(
-            (time() - strtotime($timecheck[0]['updated_at'])) > 310
-            ){
-
-                    $json = json_decode(file_get_contents('https://portaallovetracking.com/api_po/1.php?api=pl&ver=1.5&key=' . env('API_KEY_TRACKER') . '&cmd=OBJECT_GET_POSITION,*'), true); 
-                    foreach($json as $key => $tracker){
-                        $scooterid = Scooter::where('imei', '=', $key)->first()->id;  
-                        $scooterupdate = Scooter::find($scooterid);
-                        $scooterupdate->latitude = $tracker['lat'];
-                        $scooterupdate->longitude = $tracker['lng'];
-                        $scooterupdate->save(); 
-                    };
-                    $scooter = Scooter::all();
-                    return response()->json($scooter);
-
-        } else {   
-          $scooter = Scooter::all();
-          return response()->json($scooter);
-        }
+    public function retrieve(Scooter $scooter){
+        $scooterPositionInfo = $scooter->retrievePositionInfo();
+        return $scooterPositionInfo;  
     }
 }
