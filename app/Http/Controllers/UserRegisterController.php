@@ -51,11 +51,20 @@ class UserRegisterController extends Controller
         $user_id = User::where('cell_number', $request->cell_number)->value('id');
         $cell_number = ltrim($user->cell_number, '+');
 
+        if(env('APP_ENV') == "local"){
+    
+            //for local testing instead of sending SMS
+            mail('ivojongmans@gmail.com', 'SMS Verification', $pin);
+        }
+
+        elseif(env('APP_ENV') == "production") {
+        //for production send SMS
         Nexmo::message()->send([
             'to'   =>  $cell_number,
             'from' => 'NEXMO',
             'text' => 'Welcome to ROLLR! This is your personal verification code: '.$pin
         ]);
+        }
         
         if (Hash::check($request->password, $database_password)) {
             Auth::loginUsingId($user_id);

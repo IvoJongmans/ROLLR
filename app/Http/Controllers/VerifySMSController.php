@@ -56,11 +56,20 @@ class VerifySMSController extends Controller
 
         User::where('id', $id)->update(array('pin' => bcrypt($pin)));
 
+        if(env('APP_ENV') == "local"){
+    
+            //for local testing instead of sending SMS
+            mail('ivojongmans@gmail.com', 'SMS Verification', $pin);
+        }
+
+        elseif(env('APP_ENV') == "production") {
+        //for production send SMS
         Nexmo::message()->send([
-            'to'   => $cell_number,
+            'to'   =>  $cell_number,
             'from' => 'NEXMO',
             'text' => 'Welcome to ROLLR! This is your personal verification code: '.$pin
         ]);
+        }
 
         return view('retryverifysms');
     }

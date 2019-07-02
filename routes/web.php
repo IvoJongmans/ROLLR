@@ -28,8 +28,7 @@ Route::post('/login', 'UserLoginController@login');
 Route::post('/verifysmslogin', 'VerifySMSController@verifysmslogin')->middleware('auth');
 
 Route::get('/retryverifysms', 'VerifySMSController@retryverifysms')->middleware('auth');
-Route::post('/retryverifysms', 'VerifySMSController@retryverifysmscheck')->middleware('auth');
- 
+Route::post('/retryverifysms', 'VerifySMSController@retryverifysmscheck')->middleware('auth'); 
 
 //routes to the scanned QR-code page
 Route::get('scooter/{scooter}', 'ScooterController@show'); 
