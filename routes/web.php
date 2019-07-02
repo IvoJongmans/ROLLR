@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Admin Login
+Route::get('/admin_12345', 'AdminController@home')->name('admin');
+Route::post('/admin_12345/login', 'AdminController@login');
+Route::get('/admin_12345/test', 'AdminController@test')->name('test')->middleware('authadmin:admin');
 
 
 Route::get('/', function () {
@@ -109,3 +112,4 @@ Route::get('/verify/cc/{user}', 'VerifyCreditcardController@handle');
   ]);
 
 // Auth::routes();
+
