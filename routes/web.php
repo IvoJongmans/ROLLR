@@ -35,7 +35,7 @@ Route::get('/retryverifysms', 'VerifySMSController@retryverifysms')->middleware(
 Route::post('/retryverifysms', 'VerifySMSController@retryverifysmscheck')->middleware('auth'); 
 
 //routes to the scanned QR-code page
-Route::get('scooter/{scooter}', 'ScooterController@show'); 
+Route::get('scooter/{scooter}', 'UserScooterController@show'); 
 
 Route::get('/logout', 'LogoutController@logout')->name('logout');
 
@@ -44,8 +44,8 @@ Route::get('/scooter/{scooter}/starttrip', 'TripController@start_trip')->name('s
 Route::get('/scooter/{scooter}/stoptrip/{trip}', 'TripController@stop_trip')->name('stop_trip');
 
 // route map all scooters 
-Route::get('map', 'ScooterController@map');
-Route::post('map/retrieve', 'ScooterController@retrieve');
+Route::get('map', 'MapController@map');
+Route::post('map/retrieve', 'MapController@retrieve');
 
 //logout
 Route::get('/logout', 'LogoutController@logout')->name('logout');
