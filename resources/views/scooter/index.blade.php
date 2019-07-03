@@ -71,7 +71,7 @@ async defer></script>
                         {{$scooter->imei}}
                     </td>
                     <td>
-                        <a href="/admin/scooter/{{$scooter->id}}"><button class="button is-black">Show info & location</button></a>
+                        <a href="/admin/scooter/{{$scooter->id}}"><button class="button is-black">Show detailed info & location</button></a>
                     </td>
                 </tr>
             @endforeach
