@@ -18,6 +18,7 @@ class Scooter extends Model
                         $scooterupdate = Scooter::find($scooterid);
                         $scooterupdate->latitude = $tracker['lat'];
                         $scooterupdate->longitude = $tracker['lng'];
+                        $scooterupdate->battery = $tracker['params']['batl'];
                         $scooterupdate->save(); 
                     };
                     $scooter = Scooter::all();
