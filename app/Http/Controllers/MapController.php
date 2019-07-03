@@ -9,7 +9,7 @@ use App\Scooter;
 class MapController extends Controller
 {
     public function map(){
-        return view('scooter/map'); 
+        return view('map/map'); 
     }
 
     public function retrieve(Scooter $scooter){
