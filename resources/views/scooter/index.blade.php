@@ -31,6 +31,7 @@ async defer></script>
             <tr>
                 <th>ID</th>
                 <th>Status</th>
+                <th>Accu GPS</th>
                 <th>IMEI</th>
                 <th>View Scooter</th>
             </tr>
@@ -43,6 +44,28 @@ async defer></script>
                     </td>
                     <td>
                         {{$scooter->availability}}
+                    </td>
+                    <td>
+                        @switch($scooter->battery)
+                            @case(0)
+                            <div id="batteryempty">Empty</div>
+                            @break
+                            @case(1)
+                            <div id="batteryempty">Empty</div>
+                            @break
+                            @case(2)
+                            <div id="batterylow">Low</div>
+                            @break
+                            @case(3)
+                            <div id="batterymid">Mid</div>
+                            @break
+                            @case(4)
+                            <div id="batteryhigh">High</div>
+                            @break
+                            @case(5)
+                            <div id="batteryfull">Full</div>
+                            @break
+                        @endswitch
                     </td>
                     <td>
                         {{$scooter->imei}}
