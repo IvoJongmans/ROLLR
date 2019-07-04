@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Scooter extends Model
 {
+    public function storeNewScooter($request){
+        $scooter = new Scooter; 
+        $scooter->imei = $request['imei'];
+        $scooter->brand = $request['brand'];
+        $scooter->tradename = $request['trade'];
+        $scooter->type = $request['type'];
+        $scooter->serialnumber = $request['serial']; 
+        $scooter->save();    
+    }
+
     public function retrievePositionInfo(){
         $timecheck = Scooter::oldest('updated_at')->get();
         if(

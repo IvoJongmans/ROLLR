@@ -38,8 +38,16 @@ class ScooterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Scooter $scooter)
     {
+        $validatedRequest = $request->validate([
+            'imei' => 'required',
+            'brand' => 'required',
+            'trade' => 'required',
+            'type' => 'required',
+            'serial' => 'required',
+        ]);
+        $scooter->storeNewScooter($validatedRequest); 
         return redirect()->back(); 
     }
 

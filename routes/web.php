@@ -16,6 +16,7 @@
 Route::get('/admin', 'AdminController@test')->name('admin')->middleware('is_admin');
 Route::get('/admin/scooters', 'ScooterController@index')->name('indexscooters')->middleware('is_admin');
 Route::get('/admin/scooters/create', 'ScooterController@create')->name('createscooter')->middleware('is_admin');
+Route::post('/admin/scooters/store', 'ScooterController@store')->name('storescooter')->middleware('is_admin');
 
 
 Route::get('/', function () {
