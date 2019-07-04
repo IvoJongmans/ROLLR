@@ -14,7 +14,8 @@
 // Route::get('/admin_12345', 'AdminController@home')->name('admin');
 // Route::post('/admin_12345/login', 'AdminController@login');
 Route::get('/admin', 'AdminController@test')->name('admin')->middleware('is_admin');
-Route::get('/admin/scooters', 'ScooterController@index')->middleware('is_admin');
+Route::get('/admin/scooters', 'ScooterController@index')->name('indexscooters')->middleware('is_admin');
+Route::get('/admin/scooters/create', 'ScooterController@create')->name('createscooter')->middleware('is_admin');
 
 
 Route::get('/', function () {

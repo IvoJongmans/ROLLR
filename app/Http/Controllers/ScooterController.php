@@ -29,7 +29,7 @@ class ScooterController extends Controller
      */
     public function create()
     {
-        return redirect()->back(); 
+        return view('/scooter/create'); 
     }
 
     /**

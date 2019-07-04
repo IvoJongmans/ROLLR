@@ -1,6 +1,11 @@
+html {
+    height: 100%; 
+    background-color: #001B2B; 
+}
 body {
         color:white;
-        background-color: #001B2B;
+        height: 100%;
+        background-color: #001B2B; 
 }
 #map {
     height: 400px;
