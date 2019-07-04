@@ -1,7 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-=======
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +17,6 @@ Route::get('/admin', 'AdminController@test')->name('admin')->middleware('is_admi
 Route::get('/admin/scooters', 'ScooterController@index')->middleware('is_admin');
 
 
->>>>>>> 01124ecd2ab723a57d8b1d9fd2f5c41f492ae913
 Route::get('/', function () {
     return view('index');
 });
@@ -60,7 +57,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/verify/{user}', 'VerifyUserController@handle')->middleware('auth');
 Route::get('/verify/cc/{user}', 'VerifyCreditcardController@handle');
   
-<<<<<<< HEAD
 // Password Reset Routes...
 Route::post('password/email', [
   'as' => 'password.email',
@@ -88,35 +84,3 @@ Route::post('register', [
   'as' => '',
   'uses' => 'UserRegisterController@store'
 ]);
-=======
-  // Password Reset Routes...
-  Route::post('password/email', [
-    'as' => 'password.email',
-    'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail'
-  ]);
-  Route::get('password/reset', [
-    'as' => 'password.request',
-    'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm'
-  ]);
-  Route::post('password/reset', [
-    'as' => 'password.update',
-    'uses' => 'Auth\ResetPasswordController@reset'
-  ]);
-  Route::get('password/reset/{token}', [
-    'as' => 'password.reset',
-    'uses' => 'Auth\ResetPasswordController@showResetForm'
-  ]);
-  
-  // Registration Routes...
-  Route::get('register', [
-    'as' => 'register',
-    'uses' => 'UserRegisterController@index'
-  ]);
-  Route::post('register', [
-    'as' => '',
-    'uses' => 'UserRegisterController@store'
-  ]);
-
-// Auth::routes();
-
->>>>>>> 01124ecd2ab723a57d8b1d9fd2f5c41f492ae913
