@@ -1,67 +1,6 @@
 @extends('layout')
 
 @section('style')
-body {
-  color:white;
-  background-color: #001B2B;
-}
-
-h2 {
-  padding: 20px;
-}
-
-button {
-margin-top:25px;
-}
-
-.custom-button{
-background:    #001b2b;
-border:        4px solid #fb7612;
-border-radius: 5px;
-padding:       8px 20px;
-color:         #ffffff;
-display:       inline-block;
-text-align:    center;
-min-width:     150px;
-}
-
-img {
-position: absolute;
-top: 90%;
-left: 50%;
-width: 90px;
-height: 90px;
-margin-top: -45px; /* Half the height */
-margin-left: -45px; /* Half the width */
-}
-
-.StripeElement {
-  box-sizing: border-box;
-
-  height: 40px;
-
-  padding: 10px 12px;
-
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background-color: white;
-
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
-}
-
-.StripeElement--focus {
-  box-shadow: 0 1px 3px 0 #cfd7df;
-}
-
-.StripeElement--invalid {
-  border-color: #fa755a;
-}
-
-.StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
-}
 
 @endsection
 
@@ -84,8 +23,6 @@ margin-left: -45px; /* Half the width */
 </form>
 
 <img src="/images/scooter.png" class="fix">
-
-
 
 <script>
 
@@ -159,10 +96,6 @@ function stripeTokenHandler(token) {
   // Submit the form
   form.submit();
 }
-
-
-
-
 
 </script>
     
