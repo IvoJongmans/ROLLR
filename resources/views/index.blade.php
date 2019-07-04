@@ -2,52 +2,75 @@
 
 @section('style')
 
-    body {
-        color:white;
-        background-color: #001B2B;
+body {
+    color:white;
+    background-color: #001B2B;
+  }
+  
+  h2 {
+    padding: 20px;
+  }
+  
+  button {
+    margin-top:25px;
+  }
+  
+  .custom-button{
+  background:    #001b2b;
+  border:        4px solid #fb7612;
+  border-radius: 5px;
+  padding:       8px 20px;
+  color:         #ffffff;
+  display:       inline-block;
+  text-align:    center;
+  min-width:     150px;
+  }
+  
+  .fix {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  margin-top: -45px; /* Half the height */
+  margin-left: -45px; /* Half the width */
+  }
+  
+  .dropdown-toggle:after { content: none }
+  
+  .hamburger {
+    height:25px;
+    width: 25px;  
+  }
+  
+  .hamburger-button {
+    background:    #001b2b;
+    border:        4px solid #fb7612;
+    border-radius: 5px;
+    padding:       8px 20px;
+    color:         #ffffff;        
+    text-align:    center;  
+    margin:        10px;
     }
-
 @endsection
 
-@section('content')
+@section('content') 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-        
-        RL here
-      </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">How it works</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Our scooters
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Falcon</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Xiaomi</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact Us</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="register">Register</a>
-        </li>
-      </ul>>
-    </div>
-  </nav>
-
+    <div class="container">
+        <div class="row">
+        <div class="col-6 text-left my-auto"><img src="/images/rollr_logo.png" style="height:50px;"></div>
+        <div class="col-6 text-right">
+            <button type="button" class="hamburger-button dropdown-toggle" data-toggle="dropdown">
+                <img src="/images/hamburger.png" class="hamburger">
+            </button>
+            
+            <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="/login">Login</a>
+            <a class="dropdown-item" href="/register">Register</a>            
+            </div>
+        </div>
+        </div>
+    </div> 
+    
+    
 @endsection

@@ -1,23 +1,10 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
-
 Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/account', 'AccountController@index');
+Route::get('/account', 'AccountController@index')->middleware('auth');
 
 Route::get('/creditcard', 'CreditcardController@show')->middleware('auth');
 Route::post('/creditcard', 'CreditcardController@addCard')->middleware('auth');
@@ -43,11 +30,6 @@ Route::get('/scooter/{scooter}/stoptrip/{trip}', 'TripController@stop_trip')->na
 Route::get('map', 'ScooterController@map');
 Route::post('map/retrieve', 'ScooterController@retrieve');
 
-//logout
-Route::get('/logout', 'LogoutController@logout')->name('logout');
-
-Route::post('/charge', 'PaymentController@handle');
-
 //handles the webhook from stripe.com
 Route::post('/stripe/webhook', 'StripeWebhookController@handle');
 Route::post('/stripe/verify_cc', 'StripeCreditcardVerifyController@handle');
@@ -57,54 +39,31 @@ Route::get('/home', 'HomeController@index')->name('home');
 //API
 Route::get('/verify/{user}', 'VerifyUserController@handle')->middleware('auth');
 Route::get('/verify/cc/{user}', 'VerifyCreditcardController@handle');
-
-
-// Route::get('scooter/{scooter}/register', 'UserRegisterController@index');
-// Route::post('scooter/{scooter}/register', 'UserRegisterController@store');
-
-
-// Route::post('scooter/{scooter}/login', 'UserLoginController@login');
-
-// Route::get('scooter/{scooter}/verify/{user}', 'VerifyUserController@verify')->middleware('auth');
-
-
-// Route::get('scooter/{scooter}/user/{user}', 'UserController@dashboard')->name('dashboard')->middleware('auth');
-
-
-//API
-// Route::get('/verify/{user}', 'VerifyUserController@handle')->middleware('auth');
-// Route::get('/verify/cc/{user}', 'VerifyCreditcardController@handle');
-
-
-
-// Authentication Routes...
   
-  // Password Reset Routes...
-  Route::post('password/email', [
-    'as' => 'password.email',
-    'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail'
-  ]);
-  Route::get('password/reset', [
-    'as' => 'password.request',
-    'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm'
-  ]);
-  Route::post('password/reset', [
-    'as' => 'password.update',
-    'uses' => 'Auth\ResetPasswordController@reset'
-  ]);
-  Route::get('password/reset/{token}', [
-    'as' => 'password.reset',
-    'uses' => 'Auth\ResetPasswordController@showResetForm'
-  ]);
-  
-  // Registration Routes...
-  Route::get('register', [
-    'as' => 'register',
-    'uses' => 'UserRegisterController@index'
-  ]);
-  Route::post('register', [
-    'as' => '',
-    'uses' => 'UserRegisterController@store'
-  ]);
+// Password Reset Routes...
+Route::post('password/email', [
+  'as' => 'password.email',
+  'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail'
+]);
+Route::get('password/reset', [
+  'as' => 'password.request',
+  'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm'
+]);
+Route::post('password/reset', [
+  'as' => 'password.update',
+  'uses' => 'Auth\ResetPasswordController@reset'
+]);
+Route::get('password/reset/{token}', [
+  'as' => 'password.reset',
+  'uses' => 'Auth\ResetPasswordController@showResetForm'
+]);
 
-// Auth::routes();
+// Registration Routes...
+Route::get('register', [
+  'as' => 'register',
+  'uses' => 'UserRegisterController@index'
+]);
+Route::post('register', [
+  'as' => '',
+  'uses' => 'UserRegisterController@store'
+]);
