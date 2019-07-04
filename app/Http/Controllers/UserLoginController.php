@@ -30,6 +30,10 @@ class UserLoginController extends Controller
         if (Hash::check($request->password, $database_password)) {
             Auth::loginUsingId($user_id);
             if (Auth::check()) {
+                if(auth()->user()->isAdmin()){
+                    return redirect('/admin');
+                }
+                else   
                 return redirect('/account');
             }
             
