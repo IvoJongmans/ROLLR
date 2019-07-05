@@ -54,10 +54,10 @@ Route::post('map/retrieve', 'MapController@retrieve');
 //handles the webhook from stripe.com
 Route::post('/stripe/webhook', 'StripeWebhookController@handle');
 Route::post('/stripe/verify_cc', 'StripeCreditcardVerifyController@handle');
-Route::post('/stripe/ideal_source_chargeable', 'Idealcontroller@chargeable');
-Route::post('/stripe/charge_succeeded', 'Idealcontroller@charge_succeeded');
+Route::post('/stripe/ideal_source_chargeable', 'IdealController@chargeable');
+Route::post('/stripe/charge_succeeded', 'IdealController@charge_succeeded');
 
-Route::get('/stripe/ideal_source_chargeable', 'Idealcontroller@chargeable');
+Route::get('/stripe/ideal_source_chargeable', 'IdealController@chargeable');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
