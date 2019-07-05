@@ -57,9 +57,6 @@ Route::post('/stripe/verify_cc', 'StripeCreditcardVerifyController@handle');
 Route::post('/stripe/ideal_source_chargeable', 'IdealController@chargeable');
 Route::post('/stripe/charge_succeeded', 'IdealController@charge_succeeded');
 
-Route::get('/stripe/ideal_source_chargeable', 'IdealController@chargeable');
-
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 //API
