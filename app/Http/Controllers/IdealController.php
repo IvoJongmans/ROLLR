@@ -16,18 +16,20 @@ class IdealController extends Controller
     }
 
     public function chargeable(Request $request) {
-        $source = $request->data['object']['id'];
-        $stripe_id = $request->data['object']['owner']['name'];
-        $amount = $request->data['object']['amount'];
 
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        User::first()->update(array('credit' => 1000));
+        // $source = $request->data['object']['id'];
+        // $stripe_id = $request->data['object']['owner']['name'];
+        // $amount = $request->data['object']['amount'];
 
-        \Stripe\Charge::create([
-            "amount" => $amount,
-            "currency" => "eur",
-            "source" => $source, // obtained with Stripe.js
-            // "metadata" => ["order_id" => "6735"]
-        ]);
+        // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        // \Stripe\Charge::create([
+        //     "amount" => $amount,
+        //     "currency" => "eur",
+        //     "source" => $source, // obtained with Stripe.js
+        //     // "metadata" => ["order_id" => "6735"]
+        // ]);
     }
 
     public function charge_succeeded(Request $request) {
