@@ -80,7 +80,7 @@ form.addEventListener('submit', function(event) {
     // Specify the URL to which the customer should be redirected
     // after paying.
     redirect: {
-      return_url: 'https://rollr.serveo.net/account',
+      return_url: 'https://app.rollr.nl/account',
     },
   };
 
