@@ -111,6 +111,16 @@ class TripController extends Controller
         $amount_euro = number_format($amount / 100, 2);
 
         $stripe_id = Auth::user()->stripe_id;
+
+        if(Auth::user()->credit > 1.15) {
+
+            $current_credit = User::where('stripe_id', $stripe_id)->value('credit');
+
+            User::where('stripe_id', $stripe_id)->update(array('credit' => ($current_credit - $amount_euro)));
+
+        }
+
+        else {
         
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         
@@ -119,11 +129,12 @@ class TripController extends Controller
             "currency" => "eur",
             "customer" => $stripe_id
           ));
-
-
-          $trip->amount = $amount_euro;   
-          $trip->time = $trip_time_seconds;
           
-          return $trip;
+        }
+        
+        $trip->amount = $amount_euro;   
+        $trip->time = $trip_time_seconds;
+        
+        return $trip;
     }
 }

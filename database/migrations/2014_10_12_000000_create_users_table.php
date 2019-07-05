@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('cell_number');
             $table->string('password');
             $table->string('stripe_id');
+            $table->float('credit')->default(0.00);
             $table->string('pin');
             $table->string('user_validated')->default('no');
             $table->string('cc_validated')->default('no');

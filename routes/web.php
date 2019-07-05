@@ -26,6 +26,10 @@ Route::get('/account', 'AccountController@index')->middleware('auth');
 Route::get('/creditcard', 'CreditcardController@show')->middleware('auth');
 Route::post('/creditcard', 'CreditcardController@addCard')->middleware('auth');
 
+Route::get('/ideal', 'IdealController@show')->middleware('auth');
+Route::post('/ideal', 'IdealController@addCard')->middleware('auth');
+
+
 Route::get('/login', 'UserLoginController@index');
 Route::post('/login', 'UserLoginController@login');
 
@@ -50,6 +54,8 @@ Route::post('map/retrieve', 'MapController@retrieve');
 //handles the webhook from stripe.com
 Route::post('/stripe/webhook', 'StripeWebhookController@handle');
 Route::post('/stripe/verify_cc', 'StripeCreditcardVerifyController@handle');
+Route::post('/stripe/ideal_source_chargeable', 'Idealcontroller@chargeable');
+Route::post('/stripe/charge_succeeded', 'Idealcontroller@charge_succeeded');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
