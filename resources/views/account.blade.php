@@ -29,6 +29,10 @@
         </div>
     </div>
 
+    @if (Session::has('add_cc_or_credit'))
+	<div class="alert alert-info">{{ Session::get('add_cc_or_credit') }}</div>
+    @endif
+
     <p class="text-center">Cell number: {{Auth::user()->cell_number}}<br/>
     @if(Auth::user()->credit >= 1.15 )
         Credits: {{number_format(Auth::user()->credit, 2)}}
