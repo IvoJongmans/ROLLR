@@ -61,7 +61,7 @@
         </div>     
     @endif  
 
-   @if(!Session::has('scooter') && Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && (Auth::user()->cc_validated == 'yes' || Auth::user()->cc_validated == 'yes' ))
+   @if(!Session::has('scooter') && Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && (Auth::user()->cc_validated == 'yes' || Auth::user()->credit >= 1.15 ))
    <div class="text-center">
       <a href="/map"><button class="custom-button" style="margin-top:20px;">Show scooters on map</button></a>
     </div>
