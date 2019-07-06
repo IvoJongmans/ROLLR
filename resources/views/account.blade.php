@@ -37,7 +37,7 @@
     </div>
 
     <p class="text-center">Cell number: {{Auth::user()->cell_number}}<br/>
-    @if(Auth::user()->credit >= 1.15 )
+    @if(Auth::user()->credit >= 1.15 && Auth::user()->cc_validated == 'yes' )
         Credits: {{number_format(Auth::user()->credit, 2)}}
     @else
         Credits: {{number_format(Auth::user()->credit, 2)}}<br>
@@ -46,13 +46,14 @@
 
     @endif
     </p>
+
     @if(Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'no')
         <div class="text-center">
             Please verify cell number: <a href="/retryverifysms"><button class="custom-button" style="margin-top:20px;">Verify SMS</button></a>
         </div>
     @endif
     
-    @if(Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && Auth::user()->cc_validated == 'no' )
+    @if(Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && Auth::user()->cc_validated == 'no' && Auth::user()->credit < 1.15 )
     <div class="text-center">
         Or add a creditcard: <br><a href="/creditcard"><button class="custom-button" style="margin-top:20px;">Add Creditcard</button></a><br>
 
