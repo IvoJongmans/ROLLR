@@ -54,7 +54,7 @@ class UserScooterController extends Controller
 
             return view('retryverifysms');
         }
-        elseif (Auth::user()->cc_validated == "no" || Auth::user()->credit < 1.15 ) {
+        elseif (Auth::user()->cc_validated == "no" && Auth::user()->credit < 1.15 ) {
             Session::flash('add_cc_or_credit', 'Please add a creditcard or charge your 
                                 account with credits through an iDEAL payment');
             return view('account');

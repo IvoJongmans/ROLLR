@@ -22,16 +22,19 @@
         </div>
         </div>
     </div> 
+
+    
+    @if (Session::has('add_cc_or_credit'))
+	<div class="container">
+		<div class="alert alert-info text-center">{{ Session::get('add_cc_or_credit') }}</div>
+	</div>
+    @endif
     
     <div class="container">
         <div class="text-center">
             <h2>Account Details</h2>
         </div>
     </div>
-
-    @if (Session::has('add_cc_or_credit'))
-	<div class="alert alert-info">{{ Session::get('add_cc_or_credit') }}</div>
-    @endif
 
     <p class="text-center">Cell number: {{Auth::user()->cell_number}}<br/>
     @if(Auth::user()->credit >= 1.15 )
