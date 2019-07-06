@@ -18,7 +18,7 @@
           Cell Phone Number:
         </p>
         <div class="form-row">         
-          <input class="form-control" type="tel" name="cell_number" id="phone" required style="width:100%">
+          <input class="form-control" type="tel" name="cell_number" id="phone" placeholder="+31612345678" required style="width:100%">
         </div>
         <div class="form-row">
           <label for="password">
@@ -45,25 +45,8 @@
     <script src="js/intlTelInput.js"></script>
 
     <script>
-      var input = document.querySelector("#phone"), output = document.querySelector("#output");
-      // window.intlTelInput(input);
-      var iti = window.intlTelInput(input, {
-  nationalMode: true,
-  utilsScript: "../../build/js/utils.js?1562189064761" // just for formatting/placeholders etc
-});
-
-var handleChange = function() {
-  var text = (iti.isValidNumber()) ? "International: " + iti.getNumber() : "Please enter a number below";
-  var textNode = document.createTextNode(text);
-  output.innerHTML = "";
-  output.appendChild(textNode);
-};
-
-// listen to "keyup", but also "change" to update when the user selects a country
-input.addEventListener('change', handleChange);
-input.addEventListener('keyup', handleChange);
-
-
+      var input = document.querySelector("#phone");
+      window.intlTelInput(input);
     </script>
 
     <script>
