@@ -17,19 +17,17 @@ class IdealController extends Controller
 
     public function chargeable(Request $request) {
 
-        return "YOLO";
+        $source = $request->data['object']['id'];
+        $stripe_id = $request->data['object']['owner']['name'];
+        $amount = $request->data['object']['amount'];
 
-        // $source = $request->data['object']['id'];
-        // $stripe_id = $request->data['object']['owner']['name'];
-        // $amount = $request->data['object']['amount'];
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
-        // \Stripe\Charge::create([
-        //     "amount" => $amount,
-        //     "currency" => "eur",
-        //     "source" => $source, // obtained with Stripe.js
-        // ]);
+        \Stripe\Charge::create([
+            "amount" => $amount,
+            "currency" => "eur",
+            "source" => $source, // obtained with Stripe.js
+        ]);
     }
 
     public function charge_succeeded(Request $request) {
