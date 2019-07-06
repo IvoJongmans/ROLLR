@@ -44,9 +44,9 @@
 
     <p class="text-center">Cell number: {{Auth::user()->cell_number}}<br/>
     @if(Auth::user()->cc_validated == "yes")
-        Creditcard: Yes
+        Creditcard: Yes<br>
     @else
-        Creditcard: No
+        Creditcard: No<br>
     @endif
         Credits: {{number_format(Auth::user()->credit, 2)}}<br>
         Charge your credits using the iDEAL-link below:<br>
