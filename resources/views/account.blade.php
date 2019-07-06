@@ -43,7 +43,7 @@
     </div>
 
     <p class="text-center">Cell number: {{Auth::user()->cell_number}}<br/>
-    @if(Auth::user->cc_validated == "yes")
+    @if(Auth::user()->cc_validated == "yes")
         Creditcard: Yes
     @else
         Creditcard: No
