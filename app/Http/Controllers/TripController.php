@@ -9,6 +9,7 @@ use App\Scooter;
 use App\User;
 use Stripe;
 use Auth;
+use Session;
 
 class TripController extends Controller
 {
@@ -96,7 +97,7 @@ class TripController extends Controller
 
     public function stop_trip(Scooter $scooter, Trip $trip){
 
-        // Session::forget('scooter');
+        Session::forget('scooter');
         
         Trip::where('id', $trip->id)->update(['updated_at' => \Carbon\Carbon::now()]);     
 
