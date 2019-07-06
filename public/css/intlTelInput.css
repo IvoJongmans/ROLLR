@@ -39,6 +39,7 @@
         border-top: none;
         border-bottom: 4px solid #555; }
   .intl-tel-input .country-list {
+    color:black;
     position: absolute;
     z-index: 2;
     list-style: none;
