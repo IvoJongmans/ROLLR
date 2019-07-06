@@ -29,6 +29,12 @@
 		<div class="alert alert-info text-center">{{ Session::get('add_cc_or_credit') }}</div>
 	</div>
     @endif
+
+    @if(Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'no')
+        <div class="text-center">
+            Please verify cell number: <a href="/retryverifysms"><button class="custom-button" style="margin-top:20px;">Verify SMS</button></a>
+        </div>
+    @endif
     
     <div class="container">
         <div class="text-center">
@@ -37,36 +43,23 @@
     </div>
 
     <p class="text-center">Cell number: {{Auth::user()->cell_number}}<br/>
-    @if(Auth::user()->credit >= 1.15 && Auth::user()->cc_validated == 'yes' )
-        Credits: {{number_format(Auth::user()->credit, 2)}}
-    @else
         Credits: {{number_format(Auth::user()->credit, 2)}}<br>
         Charge your credits using the iDEAL-link below:<br>
         <a href="/ideal"><button class="custom-button" style="margin-top:20px;">iDeal (under construction)</button></a>
-
-    @endif
     </p>
-
-    @if(Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'no')
-        <div class="text-center">
-            Please verify cell number: <a href="/retryverifysms"><button class="custom-button" style="margin-top:20px;">Verify SMS</button></a>
-        </div>
-    @endif
     
-    @if(Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && Auth::user()->cc_validated == 'no' && Auth::user()->credit < 1.15 )
+    @if(Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && Auth::user()->cc_validated == 'no')
     <div class="text-center">
         Or add a creditcard: <br><a href="/creditcard"><button class="custom-button" style="margin-top:20px;">Add Creditcard</button></a><br>
 
     </div>
     @endif
 
-    @if(Auth::user()->cc_validated == "yes" && Session::has('scooter'))
+    @if((Auth::user()->cc_validated == "yes" || Auth::user()->credit >= 1.15 ) && Session::has('scooter'))
         <div class="text-center">
             <a href="scooter/{{Session::get('scooter')->id}}"><button class="custom-button" style="margin-top:20px;">Start Trip on scooter {{Session::get('scooter')->id}} </button></a>
         </div>     
-    @endif
-    
-   
+    @endif  
 
    @if(!Session::has('scooter') && Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && Auth::user()->cc_validated == 'yes')
    <div class="text-center">
