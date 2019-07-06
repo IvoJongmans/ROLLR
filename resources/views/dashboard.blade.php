@@ -101,6 +101,8 @@
             {
               $('#trip_json').html(`<p class="text-center">Time: ${data['time']} seconds.</p>
                                     <p class="text-center">Cost: €${data['amount']}.</p>`);
+
+                                    setTimeout(function(){ window.location = "http://app.rollr.nl/account" }, 3000);
             }
           });
             $('#checkbox').attr("disabled", true);
