@@ -23,7 +23,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ACuBSISEBf6cm57NPd7FQalB66VV3-s&callback=initMap"
 async defer></script>
 <script src="{{asset('js/adminmap/updatemap.js')}}"></script>
-{{-- Nav & logo --}}
+{{-- Nav extra--}}
 <div class="container">
         <div class="row">
         <div class="col-12 text-right">
