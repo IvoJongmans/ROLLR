@@ -50,6 +50,7 @@ Route::get('/scooter/{scooter}/stoptrip/{trip}', 'TripController@stop_trip')->na
 // route map all scooters 
 Route::get('map', 'MapController@map');
 Route::post('map/retrieve', 'MapController@retrieve');
+Route::post('map/retrieveone', 'MapController@retrieveOne');
 
 //handles the webhook from stripe.com
 Route::post('/stripe/webhook', 'StripeWebhookController@handle');

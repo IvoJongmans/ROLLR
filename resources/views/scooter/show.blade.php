@@ -18,10 +18,13 @@
 </div>
 {{-- map --}}
 <div id="map"></div>
-<script src="{{asset('js/adminmap/initmap.js')}}"></script>
+<script>
+var scooterid = {{$scooter->id}} ; 
+</script>
+<script src="{{asset('js/showonemap/initmap.js')}}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ACuBSISEBf6cm57NPd7FQalB66VV3-s&callback=initMap"
 async defer></script>
-<script src="{{asset('js/adminmap/updatemap.js')}}"></script>
+<script src="{{asset('js/showonemap/updatemap.js')}}"></script>
 {{-- nav --}}
 <div class="container">
         <div class="row">

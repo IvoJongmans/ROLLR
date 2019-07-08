@@ -16,8 +16,9 @@ class MapController extends Controller
         $scooterPositionInfo = $scooter->retrievePositionInfo();
         return $scooterPositionInfo;  
     }
-    public function retrieveOne(Scooter $scooter){
-        $scooterPositionInfo = $scooter->retrievePositionInfoOne();
+    public function retrieveOne(Scooter $scooter, Request $request){
+        $id = $request['id'];
+        $scooterPositionInfo = $scooter->retrievePositionInfoOne($id);
         return $scooterPositionInfo;  
     }
 }

@@ -59,8 +59,8 @@ class Scooter extends Model
           return response()->json($scooter);
         }
     }
-    public function retrievePositionInfoOne(){
-        $timecheck = Scooter::oldest('updated_at')->get();
+    public function retrievePositionInfoOne($id){
+        $timecheck = Scooter::oldest('updated_at')->get();  
         if(
             (time() - strtotime($timecheck[0]['updated_at'])) > 310
             ){
@@ -74,11 +74,11 @@ class Scooter extends Model
                         $scooterupdate->battery = $tracker['params']['batl'];
                         $scooterupdate->save(); 
                     };
-                    $scooter = Scooter::all();
+                    $scooter = Scooter::findOrFail($id);
                     return response()->json($scooter);
 
         } else {   
-          $scooter = Scooter::all();
+          $scooter = Scooter::findOrFail($id);
           return response()->json($scooter);
         }
     }
