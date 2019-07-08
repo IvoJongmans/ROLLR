@@ -39,16 +39,17 @@ class ScooterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Scooter $scooter)
-    {
-        $validatedRequest = $request->validate([
-            'imei' => 'required',
-            'brand' => 'required',
-            'trade' => 'required',
-            'type' => 'required',
-            'serial' => 'required',
-        ]);
-        $scooter->storeNewScooter($validatedRequest); 
-        return redirect()->back(); 
+    {  
+        // $validatedRequest = $request->validate([
+        //     'imei' => 'required',
+        //     'brand' => 'required',
+        //     'trade' => 'required',
+        //     'type' => 'required',
+        //     'serial' => 'required',
+        //     'image.*' => 'required|mimes:jpg,jpeg,bmp,png,gif'
+        // ]);
+        $scooter->storeNewScooter($request); 
+        return redirect()->route('admin'); 
     }
 
     /**
@@ -59,7 +60,7 @@ class ScooterController extends Controller
      */
     public function show(Scooter $scooter)
     {
-        //
+        return view ('/scooter/show', compact('scooter'));
     }
 
     /**

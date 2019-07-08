@@ -15,7 +15,7 @@
             </a>
         </div>
         </div>
-    </div> 
+</div> 
 {{-- map --}}
 
 <div id="map"></div>
@@ -23,7 +23,16 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ACuBSISEBf6cm57NPd7FQalB66VV3-s&callback=initMap"
 async defer></script>
 <script src="{{asset('js/adminmap/updatemap.js')}}"></script>
-
+{{-- Nav & logo --}}
+<div class="container">
+        <div class="row">
+        <div class="col-12 text-right">
+            <a href="/admin/scooters/create">
+                <div class="custom-button">Add Scooter+</div>
+            </a>
+        </div>
+        </div>
+</div> 
 
 {{-- index --}}
     <table class="table is-bordered is-striped is-hoverable">
@@ -34,6 +43,7 @@ async defer></script>
                 <th>Accu GPS</th>
                 <th>IMEI</th>
                 <th>View Scooter</th>
+                <th>Thumbnails</th>
             </tr>
         </thead>
         <tbody>
@@ -65,13 +75,21 @@ async defer></script>
                             @case(5)
                             <div id="batteryfull">Full</div>
                             @break
+                            @case(6)
+                            <div id="batteryfull">Full</div>
+                            @break
                         @endswitch
                     </td>
                     <td>
                         {{$scooter->imei}}
                     </td>
                     <td>
-                        <a href="/admin/scooter/{{$scooter->id}}"><button class="button is-black">Show detailed info & location</button></a>
+                        <a href="/admin/scooters/{{$scooter->id}}"><button class="button is-black">Show detailed info & location</button></a>
+                    </td>
+                    <td>
+                       @foreach($scooter->scooterpictures as $picture)
+                    <img src={{Storage::url($picture->url)}} width="40px" height="10px">
+                       @endforeach
                     </td>
                 </tr>
             @endforeach

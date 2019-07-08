@@ -21,7 +21,7 @@
 <section class="section">
     <div class="container">
         <div class="field">
-            <form method="POST" action="/admin/scooters/store">
+            <form method="POST" action="/admin/scooters/store" enctype="multipart/form-data">
                 @csrf
             <label class="label has-text-white">
                 IMEI nummer</label>
@@ -52,6 +52,10 @@
             <div class="control">
                 <input class="input" type="text" placeholder="Serial number" name="serial" required>
             </div>
+            <div class="control">
+                <label for="image">Pictures</label>
+                <input type="file" name="image[]" class="form-control" multiple>
+            </div>
 
             <div class="control submitbutton">
                 <input class="button" value="Submit" type="submit" required>
@@ -71,4 +75,5 @@
     
     </div>
 </section>
+
 @endsection
