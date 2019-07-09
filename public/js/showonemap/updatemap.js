@@ -8,19 +8,20 @@
     */
     function updateMap() {
         URL = "/map/retrieveone";
-        console.log(`the scooter id is ${scooterid}`);
-        $.post(URL, {id: scooterid}, function(data){
-            // numbers the last scooter for the setpos
-            // If nr 1 = outer           
+        $.post(URL, {id: scooterid}, function(data){        
             latitude = data['latitude'];
             longitude = data['longitude'];
             var pos = {
                 lat: parseFloat(latitude),
                 lng: parseFloat(longitude)
             };
+            console.log(pos); 
+            if (markerArray.length == 0){
             map.setCenter(pos);
-            map.setZoom(15);
-            // If nr 2 = inner
+            map.setZoom(16);
+            }; 
+
+            if (markerArray.length == 0){
             if (data['availability'] == 'free'){
             markerArray[0] = new google.maps.Marker({
               position: pos,
@@ -49,6 +50,22 @@
             },
             icon: '/step_icon_notfree.png',
           })}
+        }
+// END FIRST SETUP OF MARKER
+// BEGIN UPDATE SET OF MARKER
+else {
+  markerArray[0].setPosition(pos);
+  console.log(pos); 
+  if(value['availability'] == 'free'){
+    markerArray[0].setIcon('/step_icon.png');
+  }
+  // if nr2
+  else {markerArray[0].setIcon('/step_icon_notfree.png')};
+}
+
+
+
+
         })
     }
     
