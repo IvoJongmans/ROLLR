@@ -56,7 +56,7 @@
 else {
   markerArray[0].setPosition(pos);
   console.log(pos); 
-  if(value['availability'] == 'free'){
+  if(data['availability'] == 'free'){
     markerArray[0].setIcon('/step_icon.png');
   }
   // if nr2
