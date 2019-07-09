@@ -39,7 +39,9 @@ class Scooter extends Model
         $scooter->save(); 
         if(isset($validatedRequest['image']))
         foreach($validatedRequest['image'] as $image){
-            $imageurl = $image->store(''); 
+            $imageurl = $image->store('');
+            echo sys_get_temp_dir(); 
+            dd($imageurl);  
             $scooterpicture = new ScooterPicture;
             $scooterpicture->url = $imageurl; 
             $scooterpicture->scooter_id = $scooter->id; 
