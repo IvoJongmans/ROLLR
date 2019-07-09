@@ -64,7 +64,7 @@ class Scooter extends Model
         $scooter->type = $validatedRequest['type'];
         $scooter->serialnumber = $validatedRequest['serial']; 
         $scooter->save(); 
-        if (!isempty($validatedRequest['image'])){
+        if (!empty($validatedRequest['image'])){
         foreach($validatedRequest['image'] as $image){
             $imageurl = $image->store(''); 
             $scooterpicture = new ScooterPicture;
