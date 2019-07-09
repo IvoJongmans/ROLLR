@@ -74,7 +74,7 @@
         markerArray[index].setPosition(pos);
             }
             google.maps.event.addListener(markerArray[index], 'click', function() {
-              window.location.href = `/admin/scooter/${value['id']}`
+              window.location.href = `/admin/scooters/${value['id']}`
           });
         });
       })
