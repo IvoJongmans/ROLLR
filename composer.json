@@ -13,6 +13,7 @@
         "laravel-notification-channels/messagebird": "^1.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "league/flysystem-aws-s3-v3": "~1.0",
         "messagebird/php-rest-api": "^1.15",
         "nexmo/laravel": "^1.1",
         "stripe/stripe-php": "^6.37"
