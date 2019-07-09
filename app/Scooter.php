@@ -48,15 +48,15 @@ class Scooter extends Model
     }
     
 
-    public function storeNewScooter($validatedRequest){
-        // $validatedRequest = $request->validate([
-        //     'imei' => 'required',
-        //     'brand' => 'required',
-        //     'trade' => 'required',
-        //     'type' => 'required',
-        //     'serial' => 'required',
-        //     'image.*' => 'required|mimes:jpg,jpeg,bmp,png,gif'
-        // ]);
+    public function storeNewScooter($request){
+        $validatedRequest = $request->validate([
+            'imei' => 'required',
+            'brand' => 'required',
+            'trade' => 'required',
+            'type' => 'required',
+            'serial' => 'required',
+            'image.*' => 'required|mimes:jpg,jpeg,bmp,png,gif'
+        ]);
         $scooter = new Scooter; 
         $scooter->imei = $validatedRequest['imei'];
         $scooter->brand = $validatedRequest['brand'];
@@ -64,13 +64,15 @@ class Scooter extends Model
         $scooter->type = $validatedRequest['type'];
         $scooter->serialnumber = $validatedRequest['serial']; 
         $scooter->save(); 
+        if (!isempty($validatedRequest['image'])){
         foreach($validatedRequest['image'] as $image){
             $imageurl = $image->store(''); 
             $scooterpicture = new ScooterPicture;
             $scooterpicture->url = $imageurl; 
             $scooterpicture->scooter_id = $scooter->id; 
             $scooterpicture->save(); 
-        }       
+        }
+    }       
     }
 
     public function retrievePositionInfo(){
