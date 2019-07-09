@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddBatteryToScootersTable extends Migration
+class CreateScooterpicturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddBatteryToScootersTable extends Migration
      */
     public function up()
     {
-        Schema::table('scooters', function (Blueprint $table) {
-            $table->integer('battery')->default('5');
+        Schema::create('scooterpictures', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
+            $table->integer('scooter_id');
+            $table->string('url');  
         });
     }
 
@@ -25,8 +28,6 @@ class AddBatteryToScootersTable extends Migration
      */
     public function down()
     {
-        Schema::table('scooters', function (Blueprint $table) {
-            $table->dropColumn('battery');
-        });
+        Schema::dropIfExists('scooterpictures');
     }
 }

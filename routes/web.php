@@ -13,8 +13,16 @@
 // Admin Login
 // Route::get('/admin_12345', 'AdminController@home')->name('admin');
 // Route::post('/admin_12345/login', 'AdminController@login');
-Route::get('/admin', 'AdminController@test')->name('admin')->middleware('is_admin');
-Route::get('/admin/scooters', 'ScooterController@index')->middleware('is_admin');
+Route::get('/admin', 'AdminController@admin')->name('admin')->middleware('is_admin');
+Route::get('/admin/scooters', 'ScooterController@index')->name('indexscooters')->middleware('is_admin');
+Route::get('/admin/scooters/create', 'ScooterController@create')->name('createscooter')->middleware('is_admin');
+Route::post('/admin/scooters/store', 'ScooterController@store')->name('storescooter')->middleware('is_admin');
+Route::get('/admin/scooters/{scooter}', 'ScooterController@show')->name('showscooter')->middleware('is_admin');
+Route::get('/admin/scooters/{scooter}/edit', 'ScooterController@edit')->name('editscooter')->middleware('is_admin');
+Route::patch('/admin/scooters/{scooter}/update', 'ScooterController@update')->name('updatescooter')->middleware('is_admin');
+Route::delete('/admin/scooters/{scooter}/delete', 'ScooterController@destroy')->name('deletescooter')->middleware('is_admin');
+Route::delete('/admin/scooterpicture/{scooterpicture}/delete', 'ScooterPictureController@destroy')->name('deletescooter')->middleware('is_admin');
+// Route::get('/admin/scooters/create/{scooter}', 'ScooterController@create')->name('createscooter')->middleware('is_admin');
 
 
 Route::get('/', function () {
@@ -50,6 +58,8 @@ Route::get('/scooter/{scooter}/stoptrip/{trip}', 'TripController@stop_trip')->na
 // route map all scooters 
 Route::get('map', 'MapController@map');
 Route::post('map/retrieve', 'MapController@retrieve');
+Route::post('map/retrieveone', 'MapController@retrieveOne');
+
 
 //handles the webhook from stripe.com
 Route::post('/stripe/webhook', 'StripeWebhookController@handle');

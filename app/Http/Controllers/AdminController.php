@@ -11,7 +11,7 @@ use App\Admin;
 class AdminController extends Controller
 {
 // Admin Panel with User model and default login
-    public function test()
+    public function admin()
     {   
         return view('admin/admin'); 
     }

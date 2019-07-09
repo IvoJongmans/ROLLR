@@ -74,7 +74,7 @@
           markerArray[index].setIcon('/step_icon.png');
         }
         // if nr2
-        else {'/step_icon_notfree.png'};
+        else {markerArray[index].setIcon('/step_icon_notfree.png')};
         markerArray[index].setPosition(pos);
             }
             google.maps.event.addListener(markerArray[index], 'click', function() {
