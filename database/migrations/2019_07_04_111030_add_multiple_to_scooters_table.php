@@ -14,10 +14,10 @@ class AddMultipleToScootersTable extends Migration
     public function up()
     {
         Schema::table('scooters', function (Blueprint $table) {
-            $table->string('brand');
-            $table->string('tradename');
-            $table->string('type');
-            $table->string('serialnumber');
+            $table->string('brand')->default('brand');
+            $table->string('tradename')->default('tradename');
+            $table->string('type')->default('type');
+            $table->string('serialnumber')->default('serialnumber');
         });
     }
 
