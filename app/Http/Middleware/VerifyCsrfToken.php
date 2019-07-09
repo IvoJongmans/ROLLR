@@ -23,6 +23,7 @@ class VerifyCsrfToken extends Middleware
         '/stripe/verify_cc',
         '/map/storelocation',
         '/map/retrieve',
+        '/map/retrieveone',
         '/scooter/{scooter}/user/{user}/starttrip',
         '/scooter/{scooter}/user/{user}/stoptrip/{trip}'
     ];

@@ -29,7 +29,7 @@ class ScooterController extends Controller
      */
     public function create()
     {
-        return redirect()->back(); 
+        return view('/scooter/create'); 
     }
 
     /**
@@ -38,9 +38,18 @@ class ScooterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        return redirect()->back(); 
+    public function store(Request $request, Scooter $scooter)
+    {  
+        // $validatedRequest = $request->validate([
+        //     'imei' => 'required',
+        //     'brand' => 'required',
+        //     'trade' => 'required',
+        //     'type' => 'required',
+        //     'serial' => 'required',
+        //     'image.*' => 'required|mimes:jpg,jpeg,bmp,png,gif'
+        // ]);
+        $scooter->storeNewScooter($request); 
+        return redirect()->route('admin'); 
     }
 
     /**
@@ -51,7 +60,7 @@ class ScooterController extends Controller
      */
     public function show(Scooter $scooter)
     {
-        //
+        return view ('/scooter/show', compact('scooter'));
     }
 
     /**
@@ -62,7 +71,7 @@ class ScooterController extends Controller
      */
     public function edit(Scooter $scooter)
     {
-        return redirect()->back(); 
+        return view ('/scooter/edit', compact('scooter'));
     }
 
     /**
@@ -74,6 +83,7 @@ class ScooterController extends Controller
      */
     public function update(Request $request, Scooter $scooter)
     {
+        $scooter->updateScooter($request, $scooter); 
         return redirect()->back(); 
     }
 
@@ -85,7 +95,9 @@ class ScooterController extends Controller
      */
     public function destroy(Scooter $scooter)
     {
-        return redirect()->back(); 
+        $scooter->deletePictures(); 
+        $scooter->delete(); 
+        return redirect()->route('indexscooters'); 
     }
     // public function map(){
     //     return view('scooter/map'); 
