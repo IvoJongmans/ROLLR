@@ -53,7 +53,7 @@
                 <input class="input" type="text" placeholder="Serial number" name="serial" required>
             </div>
             <div class="control">
-                <label for="image">Pictures</label>
+                <label class="label has-text-white" for="image">Pictures</label>
                 <input type="file" name="image[]" class="form-control" multiple required>
             </div>
 

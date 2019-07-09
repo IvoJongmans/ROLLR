@@ -49,7 +49,7 @@ class ScooterController extends Controller
         //     'image.*' => 'required|mimes:jpg,jpeg,bmp,png,gif'
         // ]);
         $scooter->storeNewScooter($request); 
-        return redirect()->route('admin'); 
+        return redirect()->route('indexscooters'); 
     }
 
     /**
