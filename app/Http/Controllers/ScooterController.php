@@ -71,7 +71,7 @@ class ScooterController extends Controller
      */
     public function edit(Scooter $scooter)
     {
-        return redirect()->back(); 
+        return view ('/scooter/edit', compact('scooter'));
     }
 
     /**
@@ -83,6 +83,7 @@ class ScooterController extends Controller
      */
     public function update(Request $request, Scooter $scooter)
     {
+        $scooter->updateScooter($request, $scooter); 
         return redirect()->back(); 
     }
 
@@ -94,7 +95,9 @@ class ScooterController extends Controller
      */
     public function destroy(Scooter $scooter)
     {
-        return redirect()->back(); 
+        $scooter->deletePictures(); 
+        $scooter->delete(); 
+        return redirect()->route('indexscooters'); 
     }
     // public function map(){
     //     return view('scooter/map'); 
