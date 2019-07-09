@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\ScooterPicture;
+use App\Scooterpicture;
 use Illuminate\Support\Facades\Storage;
 
 class Scooter extends Model
