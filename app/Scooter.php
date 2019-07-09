@@ -23,10 +23,6 @@ class Scooter extends Model
     }
 
     public function updateScooter($request, $scooter){
-        foreach($request['image'] as $image){
-            $imageurl = $image->store('');
-        }
-        dd($imageurl);
         $validatedRequest = $request->validate([
             'imei' => 'required',
             'brand' => 'required',
@@ -43,9 +39,7 @@ class Scooter extends Model
         $scooter->save(); 
         if(isset($validatedRequest['image']))
         foreach($validatedRequest['image'] as $image){
-            $imageurl = $image->store('');
-            echo sys_get_temp_dir(); 
-            dd($imageurl);  
+            $imageurl = $image->store(''); 
             $scooterpicture = new ScooterPicture;
             $scooterpicture->url = $imageurl; 
             $scooterpicture->scooter_id = $scooter->id; 
