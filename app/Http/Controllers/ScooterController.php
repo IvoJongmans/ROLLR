@@ -18,7 +18,7 @@ class ScooterController extends Controller
      */
     public function index()
     {
-        $scooters = Scooter::all();   
+        $scooters = Scooter::all()->sortBy('id');   
         return view('/scooter/index', compact('scooters'));
     }
 
