@@ -48,15 +48,15 @@ class Scooter extends Model
     }
     
 
-    public function storeNewScooter($request){
-        $validatedRequest = $request->validate([
-            'imei' => 'required',
-            'brand' => 'required',
-            'trade' => 'required',
-            'type' => 'required',
-            'serial' => 'required',
-            'image.*' => 'required|mimes:jpg,jpeg,bmp,png,gif'
-        ]);
+    public function storeNewScooter($validatedRequest){
+        // $validatedRequest = $request->validate([
+        //     'imei' => 'required',
+        //     'brand' => 'required',
+        //     'trade' => 'required',
+        //     'type' => 'required',
+        //     'serial' => 'required',
+        //     'image.*' => 'required|mimes:jpg,jpeg,bmp,png,gif'
+        // ]);
         $scooter = new Scooter; 
         $scooter->imei = $validatedRequest['imei'];
         $scooter->brand = $validatedRequest['brand'];
