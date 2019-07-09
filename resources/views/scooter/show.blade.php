@@ -62,7 +62,7 @@
             </tr>
             <tr>
                 <th>Type</th>
-                <td>{{$scooter->brand}}</td>
+                <td>{{$scooter->type}}</td>
             </tr>
             <tr>
                 <th>Serialnumber</th>
