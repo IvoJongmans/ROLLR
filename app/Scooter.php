@@ -23,6 +23,7 @@ class Scooter extends Model
     }
 
     public function updateScooter($request, $scooter){
+        dd(sys_get_temp_dir());
         $validatedRequest = $request->validate([
             'imei' => 'required',
             'brand' => 'required',
