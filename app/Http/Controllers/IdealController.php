@@ -21,15 +21,13 @@ class IdealController extends Controller
         $stripe_id = $request->data['object']['owner']['name'];
         $amount = $request->data['object']['amount'];
 
-        return "YOLO";
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-
-        // \Stripe\Charge::create([
-        //     "amount" => $amount,
-        //     "currency" => "eur",
-        //     "source" => $source, // obtained with Stripe.js
-        // ]);
+        \Stripe\Charge::create([
+            "amount" => $amount,
+            "currency" => "eur",
+            "source" => $source, // obtained with Stripe.js
+        ]);
     }
 
     public function charge_succeeded(Request $request) {
