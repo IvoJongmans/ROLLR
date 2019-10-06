@@ -21,13 +21,15 @@ class IdealController extends Controller
         $stripe_id = $request->data['object']['owner']['name'];
         $amount = $request->data['object']['amount'];
 
-        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        return "YOLO";
 
-        \Stripe\Charge::create([
-            "amount" => $amount,
-            "currency" => "eur",
-            "source" => $source, // obtained with Stripe.js
-        ]);
+        // \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        // \Stripe\Charge::create([
+        //     "amount" => $amount,
+        //     "currency" => "eur",
+        //     "source" => $source, // obtained with Stripe.js
+        // ]);
     }
 
     public function charge_succeeded(Request $request) {
@@ -35,7 +37,7 @@ class IdealController extends Controller
         if(substr($request['data']['object']['payment_method'], 0 , 4) == "card") {
 
             return "Card";
-            
+
         }
 
         else{
@@ -43,7 +45,7 @@ class IdealController extends Controller
         $stripe_id = $request['data']['object']['source']['owner']['name'];
 
         $current_credit = User::where('stripe_id', $stripe_id)->value('credit');
-        
+
         $extra_credit = $request['data']['object']['amount'] / 100;
 
         User::where('stripe_id', $stripe_id)->update(array('credit' => ($current_credit + $extra_credit)));
