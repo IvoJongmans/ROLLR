@@ -80,7 +80,7 @@ form.addEventListener('submit', function(event) {
     // Specify the URL to which the customer should be redirected
     // after paying.
     redirect: {
-      return_url: 'http://app.rollr.nl/account',
+      return_url: 'http://escooter.herokuapp.com/account',
     },
   };
 
