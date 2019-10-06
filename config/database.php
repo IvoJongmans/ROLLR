@@ -44,7 +44,7 @@ return [
             'database' => substr($heroku_db_url['path'], 1),
             'username' => $heroku_db_url['user'],
             'password' => $heroku_db_url['pass'],
-            'charset'  => 'utf8mb4',
+            'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
         ],
