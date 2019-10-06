@@ -13,7 +13,7 @@
       <button type="button" class="hamburger-button dropdown-toggle" data-toggle="dropdown">
           <img src="/images/hamburger.png" class="hamburger">
       </button>
-      
+
       <div class="dropdown-menu dropdown-menu-right">
         <a class="dropdown-item" href="#">Billing History</a>
         <a class="dropdown-item" href="#">Routes</a>
@@ -21,9 +21,9 @@
       </div>
     </div>
   </div>
-</div>  
+</div>
 
-    
+
 
     <div class="container text-center">
       <p class="text-center" style="font-size:25px;">Scooter ID: {{$scooter->id}}</p>
@@ -36,8 +36,8 @@
 
 
     <div class="container" id="trip_json">
-    
-    </div>   
+
+    </div>
 
     <script>
       var seconds = 0;
@@ -52,9 +52,9 @@
             url: "/scooter/{{$scooter->id}}/starttrip",
             success:function(data)
             {
-                
+
                 trip_id = data;
-                
+
             }
           });
           var interval = setInterval(function(){
@@ -63,36 +63,36 @@
               $('#seconds').html('0' + seconds);
             }
             else {
-              $('#seconds').html(seconds); 
+              $('#seconds').html(seconds);
             }
             if(minutes <= 9) {
               $('#minutes').html('0' + minutes);
             }
             else {
-              $('#minutes').html(minutes); 
+              $('#minutes').html(minutes);
             }
-            
+
             if(hours <= 9) {
               $('#hours').html('0' + hours);
             }
             else {
-              $('#hours').html(hours); 
+              $('#hours').html(hours);
             }
-            
-            // $('#seconds').html(seconds);  
-            // $('#minutes').html(minutes);  
-            // $('#hours').html(hours);  
+
+            // $('#seconds').html(seconds);
+            // $('#minutes').html(minutes);
+            // $('#hours').html(hours);
 
             if(seconds == 59) {
               seconds = -1;
               minutes++;
 
-              if(minutes == 60) { 
-                minutes = 0;               
+              if(minutes == 60) {
+                minutes = 0;
                 hours++
               }
-            }    
-          
+            }
+
             if ($('#checkbox').prop('checked') == false){
               $.ajax({
             type: "get",
@@ -102,17 +102,17 @@
               $('#trip_json').html(`<p class="text-center">Time: ${data['time']} seconds.</p>
                                     <p class="text-center">Cost: €${data['amount']}.</p>`);
 
-                                    setTimeout(function(){ window.location = "http://app.rollr.nl/account" }, 3000);
+                                    setTimeout(function(){ window.location = "http://escooter.herokuapp.com/account" }, 3000);
             }
           });
             $('#checkbox').attr("disabled", true);
             clearInterval(interval);
             }
-          }, 1000);          
+          }, 1000);
         }
       });
     </script>
-   
+
     <img src="/images/scooter.png" class="fix">
-    
+
 @endsection
