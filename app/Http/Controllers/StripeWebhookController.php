@@ -11,6 +11,6 @@ class StripeWebhookController extends Controller
 
         $stripe_id = $request->data['object']['id'];
         User::where('stripe_id', $stripe_id)->update(array('user_validated' => 'yes'));
-        return "User was validated with ID: " + $stripe_id;
+        return "User was validated";
     }
 }
