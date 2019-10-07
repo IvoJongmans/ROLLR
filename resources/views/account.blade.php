@@ -68,7 +68,10 @@
 
    @if(!Session::has('scooter') && Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && (Auth::user()->cc_validated == 'yes' || Auth::user()->credit >= 1.15 ))
    <div class="text-center">
-      <a href="/map"><button class="custom-button" style="margin-top:20px;">Show scooters on map</button></a>
+      <a href="/map"><button class="custom-button" style="margin-top:20px;" disabled>Show scooters on map (this function is disabled because Google charges for API use now.)</button></a>
+    </div>
+   <div class="text-center">
+      <a href="/scooter/1"><button class="custom-button" style="margin-top:20px;" >Use this link to go to scooter nr. 1</button></a>
     </div>
    @endif
 
