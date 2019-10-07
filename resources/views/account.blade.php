@@ -4,7 +4,7 @@
 
 @endsection
 
-@section('content') 
+@section('content')
 
     <div class="container">
         <div class="row">
@@ -13,7 +13,7 @@
             <button type="button" class="hamburger-button dropdown-toggle" data-toggle="dropdown">
                 <img src="/images/hamburger.png" class="hamburger">
             </button>
-            
+
             <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="#">Billing History</a>
             <a class="dropdown-item" href="#">Routes</a>
@@ -21,9 +21,9 @@
             </div>
         </div>
         </div>
-    </div> 
+    </div>
 
-    
+
     @if (Session::has('add_cc_or_credit'))
 	<div class="container">
 		<div class="alert alert-info text-center">{{ Session::get('add_cc_or_credit') }}</div>
@@ -35,7 +35,7 @@
             Please verify cell number: <a href="/retryverifysms"><button class="custom-button" style="margin-top:20px;">Verify SMS</button></a>
         </div>
     @endif
-    
+
     <div class="container">
         <div class="text-center">
             <h2>Account Details</h2>
@@ -52,8 +52,8 @@
         Charge your credits using the iDEAL-link below:<br>
         <a href="/ideal"><button class="custom-button" style="margin-top:20px;">iDeal (under construction)</button></a>
     </p>
-    
-    @if(Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && Auth::user()->cc_validated == 'no')
+
+    @if(Auth::user()->sms_validated == 'yes' && Auth::user()->cc_validated == 'no')
     <div class="text-center">
         Or add a creditcard: <br><a href="/creditcard"><button class="custom-button" style="margin-top:20px;">Add Creditcard</button></a><br>
 
@@ -63,8 +63,8 @@
     @if((Auth::user()->cc_validated == "yes" || Auth::user()->credit >= 1.15 ) && Session::has('scooter'))
         <div class="text-center">
             <a href="scooter/{{Session::get('scooter')->id}}"><button class="custom-button" style="margin-top:20px;">Start Trip on scooter {{Session::get('scooter')->id}} </button></a>
-        </div>     
-    @endif  
+        </div>
+    @endif
 
    @if(!Session::has('scooter') && Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && (Auth::user()->cc_validated == 'yes' || Auth::user()->credit >= 1.15 ))
    <div class="text-center">
