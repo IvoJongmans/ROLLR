@@ -53,7 +53,7 @@
         <a href="/ideal"><button class="custom-button" style="margin-top:20px;">iDeal (under construction)</button></a>
     </p>
 
-    @if(Auth::user()->sms_validated == 'yes' && Auth::user()->cc_validated == 'no')
+    @if(Auth::user()->user_validated == 'yes' && Auth::user()->sms_validated == 'yes' && Auth::user()->cc_validated == 'no')
     <div class="text-center">
         Or add a creditcard: <br><a href="/creditcard"><button class="custom-button" style="margin-top:20px;">Add Creditcard</button></a><br>
 

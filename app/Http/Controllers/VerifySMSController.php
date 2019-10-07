@@ -13,21 +13,23 @@ class VerifySMSController extends Controller
     public function verifysms(){
         return view('verifysms');
     }
-    
+
     public function verifysmslogin(Request $request){
 
-        
+
         $database_pin = Auth::user()->pin;
 
         if (Hash::check($request->pin, $database_pin)) {
-            
+
 
             $id = Auth::user()->id;
 
             User::where('id', $id)->update(array('sms_validated' => 'yes'));
-    
+            //This should be removed when stripe webhook works again
+            User::where('id', $id)->update(array('user_validated' => 'yes'));
+
             return redirect('/account');
-                       
+
         }
         else {
             return view('/verifysms');
@@ -57,7 +59,7 @@ class VerifySMSController extends Controller
         User::where('id', $id)->update(array('pin' => bcrypt($pin)));
 
         if(env('APP_ENV') == "local"){
-    
+
             //for local testing instead of sending SMS
             mail('ivojongmans@gmail.com', 'SMS Verification', $pin);
         }
@@ -73,20 +75,22 @@ class VerifySMSController extends Controller
 
         return view('retryverifysms');
     }
-    
+
     public function retryverifysmscheck(Request $request){
 
             $database_pin = Auth::user()->pin;
 
             // if ($request->pin == $database_pin) {
-            if (Hash::check($request->pin, $database_pin)) {    
+            if (Hash::check($request->pin, $database_pin)) {
 
             $id = Auth::user()->id;
 
             User::where('id', $id)->update(array('sms_validated' => 'yes'));
-    
+            //This should be removed when stripe webhook works again
+            User::where('id', $id)->update(array('user_validated' => 'yes'));
+
             return redirect('/account');
-                       
+
         }
         else {
             return view('/retryverifysms');
