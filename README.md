@@ -1,5 +1,7 @@
 # ROLLR
-Web application for our rental [scooter project](http://escooter.herokuapp.com/login)
+Web application for our rental [scooter project](http://escooter.herokuapp.com/login)*
+
+- Build in Laravel framework
 
 - This application is designed [mobile-first](https://user-images.githubusercontent.com/48712793/66643359-caf8fc80-ec1e-11e9-8642-8d2bcc157de6.jpeg)
 
@@ -7,4 +9,4 @@ Web application for our rental [scooter project](http://escooter.herokuapp.com/l
 
 - For user registration and verification we've used an SMS-service called [Nexmo](https://www.nexmo.com/)
 
-
+*application may be sleeping - wait 10 seconds for it to load
