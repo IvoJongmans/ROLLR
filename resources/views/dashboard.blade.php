@@ -101,7 +101,7 @@
             {
               $('#trip_json').html(`<p class="text-center">Time: ${data['time']} seconds.</p>
                                     <p class="text-center">Cost: €${data['amount']}.</p>
-                                    <p> class="text-center">You will be redirected in 3 seconds. Please stay on this page.`);
+                                    <p class="text-center">You will be redirected in 3 seconds. Please stay on this page.`);
 
                                     setTimeout(function(){ window.location = "http://escooter.herokuapp.com/account" }, 3000);
             }
